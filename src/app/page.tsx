@@ -1,291 +1,341 @@
-import FAQ from "@/components/FAQ";
-import { faqs, screenshots, site } from "@/config";
-import { fetchStoreData } from "@/fetchStoreData";
+import type { ReactNode } from "react";
+import {
+	FiAward,
+	FiBell,
+	FiHeart,
+	FiLock,
+	FiMoon,
+	FiTarget,
+	FiWifiOff,
+} from "react-icons/fi";
+import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
+import { ContainerScroll } from "@/components/ui/ContainerScroll";
+import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards";
+import { MovingBorderButton } from "@/components/ui/MovingBorderButton";
+import { PhoneFrame } from "@/components/ui/PhoneFrame";
+import { Reveal } from "@/components/ui/Reveal";
+import { Spotlight } from "@/components/ui/Spotlight";
+import { StickyScroll } from "@/components/ui/StickyScroll";
+import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
+import { faqs, promises, site, steps } from "@/config";
 
-const howItWorks = [
-	{
-		title: "1. Check in",
-		body: "Tap a face to log how you feel in one tap, then add a note only if you want to.",
-	},
-	{
-		title: "2. Calm down",
-		body: "Slow breathing with gentle haptics or 5-4-3-2-1 grounding can help you settle in a couple of minutes.",
-	},
-	{
-		title: "3. Move forward",
-		body: "Park a worry, pick one tiny next step, and start it with a short focus timer.",
-	},
-];
+const gradientText =
+	"bg-gradient-to-r from-[#7ff0b3] via-[#5fe0d0] to-[#7bc4ff] bg-clip-text text-transparent";
 
-const featureBlocks = [
-	{
-		title: "Check in with one tap",
-		body: "Tap a face and add a short note if you want. Thought records guide you from a worrying thought to a kinder one.",
-	},
-	{
-		title: "Calm your body in minutes",
-		body: "Slow breathing with soft haptics plus 5-4-3-2-1 grounding. See how you feel before and after.",
-	},
-	{
-		title: "See your month at a glance",
-		body: "Track moods on a calendar, check simple charts, and spot patterns without needing to be good at maths.",
-	},
-	{
-		title: "Park worries, plan one small step",
-		body: "Write a worry down for Worry Time, then choose whether to plan around it or let it go.",
-	},
-	{
-		title: "Proof you're growing",
-		body: "Skill levels grow with what you do and never go down, so progress reflects your own effort over time.",
-	},
-	{
-		title: "A private place to write",
-		body: "A journal that feels like your notes app, with optional prompts when words are hard to find.",
-	},
-];
+const notifyHref =
+	"mailto:hello@brainpal.app?subject=Notify%20me%20when%20Brain%20Pal%20launches";
 
-const smallerFeatures = [
+const Chip = ({ children }: { children: ReactNode }) => (
+	<span className="rounded-full bg-[#f5f5f7] px-3 py-1.5 text-[13px] font-medium text-[#1d1d1f]">
+		{children}
+	</span>
+);
+
+const bento: {
+	title: string;
+	description: string;
+	icon: ReactNode;
+	className: string;
+	header?: ReactNode;
+}[] = [
 	{
 		title: "Five daily anchors",
-		body: "Up to five tiny habits like water, a walk, or one line of writing. Deliberately not a big to-do list.",
+		description:
+			"Up to five tiny habits like water, a walk or one line of writing. Deliberately not a big to-do list.",
+		icon: <FiTarget size={20} />,
+		className: "md:col-span-4",
+		header: (
+			<div className="absolute right-6 top-6 hidden flex-col items-end gap-2 md:flex">
+				<Chip>💧 Drink water</Chip>
+				<Chip>🚶 Walk 10 minutes</Chip>
+				<Chip>✍️ Write one line</Chip>
+			</div>
+		),
 	},
 	{
 		title: "Reminders that respect you",
-		body: "Gentle reminders can skip themselves once you already did the thing.",
+		description:
+			"Gentle nudges that skip themselves once you've already done the thing.",
+		icon: <FiBell size={20} />,
+		className: "md:col-span-2",
 	},
 	{
 		title: "Sleep, if you want it",
-		body: "See sleep from Apple Health next to mood. It's read-only and stays on your phone.",
+		description:
+			"See sleep from Apple Health next to your mood. Read-only, and it stays on your phone.",
+		icon: <FiMoon size={20} />,
+		className: "md:col-span-2",
 	},
 	{
 		title: "Coins for showing up",
-		body: "Spend earned coins on rest days that protect your streak. No real money, ever.",
+		description:
+			"Spend earned coins on rest days that protect your streak. No real money, ever.",
+		icon: <FiAward size={20} />,
+		className: "md:col-span-4",
+		header: (
+			<p
+				aria-hidden="true"
+				className={`absolute right-8 top-2 hidden text-[9rem] font-semibold leading-none tracking-tighter md:block ${gradientText}`}
+			>
+				+5
+			</p>
+		),
 	},
 	{
 		title: "Works offline",
-		body: "Everything works without an account. Account is optional and only adds sync between devices.",
+		description:
+			"Everything works with no signal and no account. Sync between devices is optional.",
+		icon: <FiWifiOff size={20} />,
+		className: "md:col-span-3",
 	},
 	{
 		title: "Apple Health",
-		body: "Breathing sessions can be saved to Mindful Minutes when you choose.",
+		description:
+			"Save breathing sessions to Mindful Minutes when you choose to.",
+		icon: <FiHeart size={20} />,
+		className: "md:col-span-3",
 	},
 ];
 
-const trustLine = "Free · No ads · No tracking · No account needed";
+const stats = [
+	{ big: "0", label: "ads" },
+	{ big: "0", label: "trackers" },
+	{ big: "0", label: "accounts needed" },
+	{ big: "100%", label: "on your phone by default" },
+];
 
-function CTAButtons({
-	appleHref,
-	browserHref,
-}: {
-	appleHref: string;
-	browserHref: string;
-}) {
+const poses = [
+	{ src: "/assets/pal/wave.png", name: "Waving hello", delay: "0s" },
+	{ src: "/assets/pal/think.png", name: "Thinking it through", delay: "0.8s" },
+	{ src: "/assets/pal/celebrate.png", name: "Celebrating you", delay: "1.6s" },
+	{ src: "/assets/pal/sleep.png", name: "Resting with you", delay: "2.4s" },
+];
+
+export default function HomePage() {
 	return (
-		<div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
-			<a
-				href={appleHref}
-				target="_blank"
-				rel="noopener noreferrer"
-				className="rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 dark:bg-white dark:text-black"
-			>
-				Download on the App Store (coming soon)
-			</a>
-			<a
-				href={browserHref}
-				target="_blank"
-				rel="noopener noreferrer"
-				className="rounded-xl border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-50 dark:border-white/20 dark:bg-white/6 dark:text-white dark:hover:bg-white/10"
-			>
-				Try it in your browser / Get notified
-			</a>
-		</div>
-	);
-}
-
-export default async function HomePage() {
-	const storeData = await fetchStoreData();
-	const logo = storeData.logo ?? site.logo;
-	const storeLinks = storeData.storeLinks ?? site.storeLinks;
-	const appScreenshots =
-		storeData.screenshots && storeData.screenshots.length > 0
-			? storeData.screenshots
-			: screenshots;
-	const heroScreenshot = appScreenshots[0] ?? logo;
-
-	return (
-		<main className="container mx-auto px-3 md:px-6">
-			<section className="mb-16 pt-12 text-center md:mb-24 md:pt-20">
-				<span className="section-label mb-4">Brain Pal</span>
-				<h1 className="mb-4 text-4xl font-black tracking-tight text-heading sm:text-5xl md:text-6xl">
-					Check in. Breathe. Take one small step.
-				</h1>
-				<p className="mx-auto mb-8 max-w-3xl text-base leading-relaxed text-body md:text-lg">
-					A private mood diary and calming toolkit for anxious days and ordinary
-					ones. One tap to log how you feel, a minute to calm your body, and a
-					gentle plan for whatever is on your mind.
-				</p>
-				<CTAButtons
-					appleHref={storeLinks.apple}
-					browserHref={storeLinks.google}
-				/>
-				<p className="mt-4 text-sm font-medium text-muted">{trustLine}</p>
-
-				<div className="mx-auto mt-10 grid max-w-4xl gap-4 md:grid-cols-[2fr_1fr]">
-					<img
-						src={heroScreenshot}
-						alt="Brain Pal check-in screen"
-						className="card-base mx-auto aspect-9/16 w-full max-w-xs rounded-3xl object-cover p-1 md:max-w-sm"
+		<main className="-mt-12">
+			{/* Hero */}
+			<section className="relative overflow-hidden bg-black pt-32 text-center md:pt-40">
+				<Spotlight className="-top-40 left-0 md:-top-20 md:left-60" />
+				<div className="relative z-10 mx-auto max-w-5xl px-6">
+					<p className="mb-5 text-lg font-semibold text-[#34d17a] md:text-xl">
+						Brain Pal
+					</p>
+					<TextGenerateEffect
+						words="Check in. Breathe. Take one small step."
+						highlight={["Breathe"]}
+						highlightClassName={gradientText}
+						className="text-[2.75rem] font-semibold leading-[1.04] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]"
 					/>
-					<div className="card-base mx-auto flex max-w-xs flex-col items-center justify-center gap-3 p-6 text-center">
-						<img
-							src={logo}
-							alt="Pal mascot waving"
-							className="h-24 w-24 rounded-3xl border border-gray-200/60 object-cover dark:border-white/10"
-						/>
-						<p className="text-sm text-body">Pal is here to cheer you on.</p>
+					<Reveal delay={0.9}>
+						<p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-[#a1a1a6] md:text-2xl">
+							A private mood diary and calming toolkit for anxious days and
+							ordinary ones.
+						</p>
+						<div className="mt-9 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
+							<MovingBorderButton href={site.links.webApp} external>
+								Try it in your browser
+							</MovingBorderButton>
+							<a
+								href={notifyHref}
+								className="text-[17px] text-[#2997ff] hover:underline"
+							>
+								Get notified for the App Store ›
+							</a>
+						</div>
+						<p className="mt-6 text-sm text-[#86868b]">
+							Free · No ads · No tracking · No account needed
+						</p>
+					</Reveal>
+				</div>
+
+				<ContainerScroll>
+					<PhoneFrame
+						src="/assets/screens/checkin.webp"
+						alt="Brain Pal home screen"
+						priority
+					/>
+				</ContainerScroll>
+			</section>
+
+			{/* Statement */}
+			<section className="bg-[#f5f5f7] px-6 py-28 md:py-44">
+				<Reveal className="mx-auto max-w-4xl">
+					<p className="text-3xl font-semibold leading-[1.15] tracking-tight text-[#86868b] md:text-5xl">
+						Some days are heavy.{" "}
+						<span className="text-[#1d1d1f]">
+							Brain Pal gives you one tap to say so, one minute to settle, and
+							one small thing to do next.
+						</span>{" "}
+						No streak guilt. No noise. Just a soft place to land.
+					</p>
+				</Reveal>
+			</section>
+
+			{/* Walkthrough */}
+			<section
+				id="how-it-works"
+				className="scroll-mt-12 bg-black py-24 md:py-32"
+			>
+				<Reveal className="mx-auto mb-6 max-w-3xl px-6 text-center">
+					<h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
+						One gentle step
+						<br />
+						<span className={gradientText}>at a time.</span>
+					</h2>
+				</Reveal>
+				<StickyScroll steps={[...steps]} />
+			</section>
+
+			{/* Bento */}
+			<section
+				id="features"
+				className="scroll-mt-12 bg-[#f5f5f7] py-24 md:py-36"
+			>
+				<Reveal className="mx-auto mb-14 max-w-3xl px-6 text-center">
+					<h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] md:text-6xl">
+						Small things that
+						<br />
+						help every day.
+					</h2>
+				</Reveal>
+				<BentoGrid className="md:grid-cols-6">
+					{bento.map((b, i) => (
+						<BentoGridItem key={b.title} index={i} {...b} />
+					))}
+				</BentoGrid>
+			</section>
+
+			{/* Privacy */}
+			<section id="privacy" className="scroll-mt-12 bg-black py-24 md:py-36">
+				<div className="mx-auto max-w-5xl px-6 text-center">
+					<Reveal>
+						<p className="mb-4 flex items-center justify-center gap-2 text-lg font-semibold text-[#34d17a]">
+							<FiLock aria-hidden="true" /> Privacy
+						</p>
+						<h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
+							What's on your phone,
+							<br />
+							<span className={gradientText}>stays on your phone.</span>
+						</h2>
+						<p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-[#a1a1a6]">
+							Everything is stored on your device by default. An account only
+							adds sync. Sleep data is read only if you allow it, and it never
+							leaves your phone.
+						</p>
+					</Reveal>
+					<div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4">
+						{stats.map((s, i) => (
+							<Reveal key={s.label} delay={i * 0.08}>
+								<div className="flex h-full flex-col items-center justify-center rounded-3xl bg-[#1d1d1f] px-4 py-10">
+									<p
+										className={`text-6xl font-semibold tracking-tighter md:text-7xl ${gradientText}`}
+									>
+										{s.big}
+									</p>
+									<p className="mt-2 text-sm text-[#a1a1a6]">{s.label}</p>
+								</div>
+							</Reveal>
+						))}
 					</div>
 				</div>
+				<InfiniteMovingCards items={promises} className="mt-16" />
 			</section>
 
-			<section id="how-it-works" className="mb-16 scroll-mt-8 md:mb-24">
-				<div className="mb-8 text-center">
-					<span className="section-label mb-4">How it works</span>
-					<h2 className="section-heading">Three gentle steps</h2>
-				</div>
-				<div className="grid gap-4 md:grid-cols-3">
-					{howItWorks.map((item) => (
-						<article key={item.title} className="card-base p-6">
-							<h3 className="mb-2 text-lg font-bold text-heading">
-								{item.title}
-							</h3>
-							<p className="text-body">{item.body}</p>
-						</article>
-					))}
-				</div>
-			</section>
-
-			<section id="features" className="mb-16 scroll-mt-8 md:mb-24">
-				<div className="mb-8 text-center">
-					<span className="section-label mb-4">Features</span>
-					<h2 className="section-heading">Built for real days</h2>
-				</div>
-				<div className="grid gap-6">
-					{featureBlocks.map((item, index) => (
-						<article
-							key={item.title}
-							className="card-base grid gap-4 p-4 md:grid-cols-[180px_1fr] md:items-center"
-						>
-							<img
-								src={appScreenshots[index % appScreenshots.length]}
-								alt={item.title}
-								className="aspect-9/16 w-36 rounded-2xl border border-gray-200 object-cover dark:border-white/10"
-							/>
-							<div>
-								<h3 className="mb-2 text-lg font-bold text-heading">
-									{item.title}
-								</h3>
-								<p className="text-body">{item.body}</p>
+			{/* Meet Pal */}
+			<section
+				id="meet-pal"
+				className="scroll-mt-12 bg-[#f5f5f7] py-24 md:py-36"
+			>
+				<Reveal className="mx-auto mb-16 max-w-3xl px-6 text-center">
+					<h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] md:text-6xl">
+						Meet Pal.
+					</h2>
+					<p className="mx-auto mt-5 max-w-xl text-xl leading-relaxed text-[#6e6e73]">
+						Your soft sidekick. Pal cheers you on when you show up, keeps you
+						company when things are hard, and never guilts you for missing a
+						day.
+					</p>
+				</Reveal>
+				<div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-6 md:grid-cols-4">
+					{poses.map((p, i) => (
+						<Reveal key={p.name} delay={i * 0.08}>
+							<div className="flex flex-col items-center rounded-[28px] bg-white px-4 pb-6 pt-8">
+								<img
+									src={p.src}
+									alt={p.name}
+									loading="lazy"
+									style={{ animationDelay: p.delay }}
+									className="h-36 w-36 animate-float object-contain md:h-44 md:w-44"
+								/>
+								<p className="mt-4 text-[15px] font-medium text-[#1d1d1f]">
+									{p.name}
+								</p>
 							</div>
-						</article>
+						</Reveal>
 					))}
 				</div>
 			</section>
 
-			<section id="small-features" className="mb-16 scroll-mt-8 md:mb-24">
-				<div className="mb-8 text-center">
-					<span className="section-label mb-4">More features</span>
-					<h2 className="section-heading">Small things that help daily</h2>
-				</div>
-				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-					{smallerFeatures.map((item) => (
-						<article key={item.title} className="card-base p-5">
-							<h3 className="mb-2 text-base font-bold text-heading">
-								{item.title}
-							</h3>
-							<p className="text-sm text-body">{item.body}</p>
-						</article>
-					))}
-				</div>
-			</section>
-
-			<section id="privacy" className="mb-16 scroll-mt-8 md:mb-24">
-				<div className="card-base p-6 md:p-8">
-					<span className="section-label mb-4">Privacy</span>
-					<h2 className="mb-4 text-3xl font-bold text-heading">
-						Private by design.
+			{/* FAQ */}
+			<section id="faq" className="scroll-mt-12 bg-white px-6 py-24 md:py-36">
+				<Reveal className="mx-auto max-w-3xl">
+					<h2 className="mb-12 text-center text-4xl font-semibold tracking-tight text-[#1d1d1f] md:text-6xl">
+						Questions.
 					</h2>
-					<ul className="space-y-3 text-body">
-						<li>
-							Everything stays on your device by default. An account is optional
-							and only adds sync.
-						</li>
-						<li>No ads. No analytics. No tracking. We never sell your data.</li>
-						<li>
-							AI helpers are off by default. Self-harm related content is not
-							sent to AI and support options are shown instead.
-						</li>
-						<li>
-							Sleep data is only read if you allow it and does not leave your
-							phone.
-						</li>
-					</ul>
-				</div>
+					<div className="divide-y divide-black/10 border-y border-black/10">
+						{faqs.map((f) => (
+							<details key={f.question} className="group py-5">
+								<summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-xl font-semibold tracking-tight text-[#1d1d1f] [&::-webkit-details-marker]:hidden">
+									{f.question}
+									<span
+										aria-hidden="true"
+										className="text-3xl font-light leading-none text-[#86868b] transition-transform duration-300 group-open:rotate-45"
+									>
+										+
+									</span>
+								</summary>
+								<p className="mt-3 max-w-2xl text-lg leading-relaxed text-[#6e6e73]">
+									{f.answer}
+								</p>
+							</details>
+						))}
+					</div>
+				</Reveal>
 			</section>
 
-			<section id="meet-pal" className="mb-16 scroll-mt-8 md:mb-24">
-				<div className="mb-8 text-center">
-					<span className="section-label mb-4">Meet Pal</span>
-					<h2 className="section-heading">Meet Pal, your soft sidekick</h2>
-					<p className="mx-auto mt-3 max-w-3xl text-body">
-						Pal cheers you on when you show up, keeps you company when things
-						are hard, and never guilts you for missing a day.
-					</p>
-				</div>
-				<div className="grid gap-4 sm:grid-cols-3">
-					{["Waving", "Thinking", "Celebrating"].map((pose) => (
-						<div
-							key={pose}
-							className="card-base flex flex-col items-center p-5 text-center"
-						>
-							<img
-								src={logo}
-								alt={`Pal ${pose.toLowerCase()} pose`}
-								className="mb-3 h-20 w-20 rounded-3xl border border-gray-200/60 object-cover dark:border-white/10"
-							/>
-							<p className="text-sm font-medium text-heading">{pose}</p>
-						</div>
-					))}
-				</div>
-			</section>
-
-			<section className="mb-16 scroll-mt-8 md:mb-24">
-				<div className="rounded-2xl border border-amber-300/70 bg-amber-50 px-5 py-4 text-amber-900 dark:border-amber-400/40 dark:bg-amber-500/10 dark:text-amber-100">
-					<h2 className="mb-2 text-lg font-bold">Safety note</h2>
-					<p className="text-sm leading-relaxed">
-						Brain Pal is a self-help tool and does not diagnose or treat any
-						condition. If you might be in danger, call your local emergency
-						number. Crisis support options are always easy to find in the app.
-					</p>
-				</div>
-			</section>
-
-			<section id="faq" className="mb-16 scroll-mt-8 md:mb-24">
-				<FAQ items={faqs} />
-			</section>
-
-			<section className="mb-16 text-center md:mb-24">
-				<div className="card-base px-6 py-10 md:px-10">
-					<h2 className="mb-3 text-3xl font-bold text-heading">
-						Be a little kinder to your mind, today.
-					</h2>
-					<p className="mx-auto mb-7 max-w-2xl text-body">
-						Brain Pal is free, private, and built for small steps that add up.
-					</p>
-					<CTAButtons
-						appleHref={storeLinks.apple}
-						browserHref={storeLinks.google}
+			{/* Final CTA */}
+			<section
+				id="get-the-app"
+				className="relative scroll-mt-12 overflow-hidden bg-black px-6 py-28 text-center md:py-40"
+			>
+				<Spotlight className="-top-40 left-0 md:left-60" fill="#34d17a" />
+				<Reveal className="relative z-10 mx-auto max-w-3xl">
+					<img
+						src="/assets/pal/love.png"
+						alt=""
+						className="mx-auto mb-6 h-28 w-28 animate-float object-contain"
 					/>
-				</div>
+					<h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
+						Be a little kinder
+						<br />
+						to your mind, <span className={gradientText}>today.</span>
+					</h2>
+					<p className="mx-auto mt-6 max-w-xl text-xl text-[#a1a1a6]">
+						Free, private, and built for small steps that add up.
+					</p>
+					<div className="mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
+						<MovingBorderButton href={site.links.webApp} external>
+							Try it in your browser
+						</MovingBorderButton>
+						<a
+							href={notifyHref}
+							className="text-[17px] text-[#2997ff] hover:underline"
+						>
+							Get notified for the App Store ›
+						</a>
+					</div>
+				</Reveal>
 			</section>
 		</main>
 	);

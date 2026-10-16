@@ -1,9 +1,9 @@
 export const NAV_LINKS = [
-	{ label: "How it works", href: "#how-it-works" },
-	{ label: "Features", href: "#features" },
-	{ label: "Privacy", href: "#privacy" },
-	{ label: "Meet Pal", href: "#meet-pal" },
-	{ label: "FAQ", href: "#faq" },
+	{ label: "How it works", href: "/#how-it-works" },
+	{ label: "Features", href: "/#features" },
+	{ label: "Privacy", href: "/#privacy" },
+	{ label: "Meet Pal", href: "/#meet-pal" },
+	{ label: "FAQ", href: "/#faq" },
 ];
 
 export const LEGAL_LINKS = [
@@ -21,10 +21,3 @@ export const LEGAL_LINKS = [
 		href: "https://prenev.github.io/brain-pal/open-source-notices/",
 	},
 ];
-
-export const fade = (delay = 0) => ({
-	initial: { opacity: 0, y: 16 },
-	whileInView: { opacity: 1, y: 0 },
-	viewport: { once: true },
-	transition: { duration: 0.5, delay },
-});

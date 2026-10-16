@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import BackToTop from "@/components/BackToTop";
 import Footer from "@/components/Footer";
+import Nav from "@/components/Nav";
 import { site } from "@/config";
 import "./globals.css";
 
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
 	},
 	icons: {
 		icon: { url: "/favicon.svg", type: "image/svg+xml" },
-		apple: "/favicon.svg",
+		apple: "/apple-touch-icon.png",
 	},
 };
 
@@ -39,8 +40,8 @@ export const viewport: Viewport = {
 	width: "device-width",
 	initialScale: 1,
 	themeColor: [
-		{ media: "(prefers-color-scheme: light)", color: "#f9fafb" },
-		{ media: "(prefers-color-scheme: dark)", color: "#060606" },
+		{ media: "(prefers-color-scheme: light)", color: "#000000" },
+		{ media: "(prefers-color-scheme: dark)", color: "#000000" },
 	],
 };
 
@@ -67,10 +68,9 @@ export default function RootLayout({
 				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
 			</head>
 			<body className="bg-gray-50 text-gray-900 dark:bg-[#060606] dark:text-white">
-				<div className="mx-auto max-w-375">
-					{children}
-					<Footer name={site.name} logo={site.logo} />
-				</div>
+				<Nav />
+				{children}
+				<Footer name={site.name} logo={site.logo} />
 				<BackToTop />
 			</body>
 		</html>
