@@ -5,6 +5,53 @@
 
 @theme {
 	--breakpoint-xs: 410px;
+
+	--animate-spotlight: spotlight 2s 0.75s ease forwards;
+	--animate-marquee: marquee 50s linear infinite;
+	--animate-spin-slow: spin 5s linear infinite;
+	--animate-float: float 6s ease-in-out infinite;
+
+	@keyframes spotlight {
+		0% {
+			opacity: 0;
+			transform: translate(-72%, -62%) scale(0.5);
+		}
+		100% {
+			opacity: 1;
+			transform: translate(-50%, -40%) scale(1);
+		}
+	}
+	@keyframes marquee {
+		to {
+			transform: translateX(calc(-50% - 0.5rem));
+		}
+	}
+	@keyframes float {
+		50% {
+			transform: translateY(-14px);
+		}
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+		"SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	.animate-float,
+	.animate-spin-slow {
+		animation: none;
+	}
 }
 
 @layer components {
@@ -49,19 +96,6 @@
 	}
 }
 
-body::before {
-	content: "";
-	position: fixed;
-	inset: 0;
-	z-index: 0;
-	pointer-events: none;
-	background-image: radial-gradient(circle, rgba(109,40,217,0.28) 1px, transparent 1px);
-	background-size: 32px 32px;
-}
-html.dark body::before {
-	background-image: radial-gradient(circle, rgba(139,92,246,0.3) 1px, transparent 1px);
-}
-
 html.theme-switching *,
 html.theme-switching {
 	transition: none;
@@ -69,35 +103,6 @@ html.theme-switching {
 
 html.light { color-scheme: light; }
 html.dark  { color-scheme: dark; }
-
-.screenshots-scrollbar {
-	scrollbar-width: thin;
-	scrollbar-color: rgba(109, 40, 217, 0.35) transparent;
-}
-.dark .screenshots-scrollbar {
-	scrollbar-color: rgba(139, 92, 246, 0.45) transparent;
-}
-
-.screenshots-scrollbar::-webkit-scrollbar { height: 4px; }
-
-.screenshots-scrollbar::-webkit-scrollbar-track {
-	background: transparent;
-}
-
-.screenshots-scrollbar::-webkit-scrollbar-thumb {
-	background: rgba(109, 40, 217, 0.35);
-	border-radius: 4px;
-}
-.dark .screenshots-scrollbar::-webkit-scrollbar-thumb {
-	background: rgba(139, 92, 246, 0.45);
-}
-
-.screenshots-scrollbar::-webkit-scrollbar-thumb:hover {
-	background: rgba(109, 40, 217, 0.6);
-}
-.dark .screenshots-scrollbar::-webkit-scrollbar-thumb:hover {
-	background: rgba(139, 92, 246, 0.7);
-}
 
 .prose {
 	max-width: 1000px;
