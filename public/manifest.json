@@ -1,6 +1,6 @@
 {
-	"name": "Brain Pal: Mood & Calm",
-	"short_name": "Brain Pal",
+	"name": "Wobbi: Mood & Calm",
+	"short_name": "Wobbi",
 	"description": "One-tap mood check-ins, a private journal, slow breathing and a gentle plan for worries. Free, no ads, no tracking, works without an account.",
 	"start_url": "/",
 	"display": "standalone",

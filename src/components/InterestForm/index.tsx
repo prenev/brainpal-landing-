@@ -77,8 +77,8 @@ const InterestForm = () => {
 				},
 				body: JSON.stringify({
 					access_key: accessKey,
-					subject: `Brain Pal waitlist: ${v.email}`,
-					from_name: "Brain Pal website",
+					subject: `Wobbi waitlist: ${v.email}`,
+					from_name: "Wobbi website",
 					email: v.email,
 					name: v.name || "(not given)",
 					interests: v.interests.join(", ") || "(none picked)",
@@ -112,7 +112,7 @@ const InterestForm = () => {
 					You're on the waitlist.
 				</h3>
 				<p className="mt-3 max-w-sm text-lg text-[#a1a1a6]">
-					Thank you. We'll email you when Brain Pal is ready, and only then.
+					Thank you. We'll email you when Wobbi is ready, and only then.
 				</p>
 			</div>
 		);
@@ -228,8 +228,8 @@ const InterestForm = () => {
 						{...register("consent")}
 					/>
 					<span>
-						Email me when Brain Pal launches. I'll only get launch news, and I
-						can ask to be removed any time.
+						Email me when Wobbi launches. I'll only get launch news, and I can
+						ask to be removed any time.
 					</span>
 				</label>
 				{errors.consent && (

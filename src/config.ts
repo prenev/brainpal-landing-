@@ -1,9 +1,9 @@
 export const site = {
-	name: "Brain Pal: Mood & Calm",
-	shortName: "Brain Pal",
-	url: "https://usebrainpal.com",
+	name: "Wobbi: Mood & Calm",
+	shortName: "Wobbi",
+	url: "https://wobbi.app",
 	/** <title> of the home page (keep under ~60 characters). */
-	title: "Brain Pal: Mood Diary, Breathing & Calm for iPhone",
+	title: "Wobbi: Mood Diary, Breathing & Calm for iPhone",
 	/** Meta description (keep under ~160 characters). */
 	description:
 		"A free, private mood diary for iPhone: one-tap check-ins, guided breathing, a worry box and a gentle journal. No ads, no tracking. Join the waitlist.",
@@ -11,12 +11,12 @@ export const site = {
 		url: "/og-share.png",
 		width: 1200,
 		height: 630,
-		alt: "Brain Pal: check in, breathe, take one small step, with the Home screen on an iPhone",
+		alt: "Wobbi: check in, breathe, take one small step, with the Home screen on an iPhone",
 	},
 	locale: "en_US",
 	logo: "/icon-192.png",
 	keywords: [
-		"Brain Pal",
+		"Wobbi",
 		"mood diary",
 		"mood tracker",
 		"CBT thought record",
@@ -30,8 +30,8 @@ export const site = {
 		/** Swap for the real App Store URL at launch. */
 		appStore: "#get-the-app",
 	},
-	companyName: "Brain Pal",
-	contactEmail: "hello@brainpal.app",
+	companyName: "Wobbi",
+	contactEmail: "hello@wobbi.app",
 	copyrightYear: 2026,
 } as const;
 
@@ -41,42 +41,42 @@ export const steps = [
 		title: "One tap to say how you feel.",
 		body: "Tap a face, add a note only if you want to. Thought records walk you from a worrying thought to a kinder one.",
 		image: "/assets/mockups/checkin.webp",
-		alt: "Brain Pal home screen with daily anchors and a mood check-in",
+		alt: "Wobbi home screen with daily anchors and a mood check-in",
 	},
 	{
 		eyebrow: "Calm down",
 		title: "Slow your body in a minute.",
 		body: "Guided breathing with soft haptics, plus 5-4-3-2-1 grounding. Notice how you feel before and after.",
 		image: "/assets/mockups/calm.webp",
-		alt: "Brain Pal breathing exercise showing a hold-and-count circle",
+		alt: "Wobbi breathing exercise showing a hold-and-count circle",
 	},
 	{
 		eyebrow: "See patterns",
 		title: "Your month, at a glance.",
 		body: "A calendar of faces and simple charts. Spot what helps without needing to be good at maths.",
 		image: "/assets/mockups/calendar.webp",
-		alt: "Brain Pal calendar of daily mood faces",
+		alt: "Wobbi calendar of daily mood faces",
 	},
 	{
 		eyebrow: "Worry time",
 		title: "Park it. Plan one small step.",
 		body: "Write a worry down for later, then choose whether to plan around it or let it go.",
 		image: "/assets/mockups/worries.webp",
-		alt: "Brain Pal worry time screen with parked and reviewed worries",
+		alt: "Wobbi worry time screen with parked and reviewed worries",
 	},
 	{
 		eyebrow: "Progress",
 		title: "Skills that only go up.",
 		body: "Levels grow with what you actually do and never go down. Progress is your effort, not a streak to lose.",
 		image: "/assets/mockups/progress.webp",
-		alt: "Brain Pal progress screen with skill levels",
+		alt: "Wobbi progress screen with skill levels",
 	},
 	{
 		eyebrow: "Journal",
 		title: "A private place to write.",
 		body: "Feels like your notes app, with optional prompts when words are hard to find. A line is enough.",
 		image: "/assets/mockups/journal.webp",
-		alt: "Brain Pal journal with a small-wins entry",
+		alt: "Wobbi journal with a small-wins entry",
 	},
 ] as const;
 
@@ -108,7 +108,7 @@ export const faqs = [
 	{
 		question: "Is it really free?",
 		answer:
-			"Yes. Brain Pal is free, with no ads, no subscriptions, and no in-app purchases.",
+			"Yes. Wobbi is free, with no ads, no subscriptions, and no in-app purchases.",
 	},
 	{
 		question: "Do I need an account?",
@@ -128,11 +128,11 @@ export const faqs = [
 	{
 		question: "Is it a replacement for therapy?",
 		answer:
-			"No. Brain Pal is a self-help companion and does not diagnose or treat any condition.",
+			"No. Wobbi is a self-help companion and does not diagnose or treat any condition.",
 	},
 	{
 		question: "Is there an Android version?",
 		answer:
-			"Brain Pal launches on iPhone first. Android is planned for later. Tell us your phone in the form above and we'll email you when it's ready.",
+			"Wobbi launches on iPhone first. Android is planned for later. Tell us your phone in the form above and we'll email you when it's ready.",
 	},
 ];
