@@ -1,16 +1,14 @@
-import type { ReactNode } from "react";
 import {
 	FiAward,
 	FiBell,
+	FiFileText,
 	FiHeart,
 	FiLock,
-	FiMoon,
 	FiTarget,
 	FiWifiOff,
 } from "react-icons/fi";
 import InterestForm from "@/components/InterestForm";
 import { AppStoreButton } from "@/components/ui/AppStoreButton";
-import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
 import { ContainerScroll } from "@/components/ui/ContainerScroll";
 import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards";
 import { PhoneFrame } from "@/components/ui/PhoneFrame";
@@ -27,83 +25,37 @@ const waitlistButton =
 const heroButton =
 	"inline-flex h-12 items-center justify-center rounded-full px-6 text-base font-bold transition-opacity hover:opacity-85";
 
-const Chip = ({ children }: { children: ReactNode }) => (
-	<span className="rounded-full bg-paper px-3 py-1.5 text-[13px] font-medium text-[#1d1d1f]">
-		{children}
-	</span>
-);
-
-const bento: {
-	title: string;
-	description: string;
-	icon: ReactNode;
-	className: string;
-	header?: ReactNode;
-}[] = [
+const features = [
 	{
+		icon: <FiTarget size={28} aria-hidden="true" />,
 		title: "Five daily anchors",
-		description:
-			"Up to five tiny habits like water, a walk or one line of writing. Deliberately not a big to-do list.",
-		icon: <FiTarget size={20} />,
-		className: "md:col-span-4",
-		header: (
-			<div className="absolute right-6 top-6 hidden flex-col items-end gap-2 md:flex">
-				<Chip>💧 Drink water</Chip>
-				<Chip>🚶 Walk 10 minutes</Chip>
-				<Chip>✍️ Write one line</Chip>
-			</div>
-		),
+		body: "Pick up to five small habits, like a walk, some sunlight or slow breathing. Some tick themselves. The limit is deliberate: this isn't a to-do list.",
 	},
 	{
+		icon: <FiBell size={28} aria-hidden="true" />,
 		title: "Reminders that respect you",
-		description:
-			"Gentle nudges that skip themselves once you've already done the thing.",
-		icon: <FiBell size={20} />,
-		className: "md:col-span-2",
+		body: "Choose the times and days. Reminders open the right tool, and skip themselves if you've already done the thing.",
 	},
 	{
-		title: "Sleep, if you want it",
-		description:
-			"See sleep from Apple Health next to your mood. Read-only, and it stays on your phone.",
-		icon: <FiMoon size={20} />,
-		className: "md:col-span-2",
+		icon: <FiHeart size={28} aria-hidden="true" />,
+		title: "Apple Health, if you want it",
+		body: "See last night's sleep next to your mood, and save breathing sessions as Mindful Minutes. It's opt-in, sleep is read-only, and it stays on your phone.",
 	},
 	{
+		icon: <FiAward size={28} aria-hidden="true" />,
 		title: "Coins for showing up",
-		description:
-			"Spend earned coins on rest days that protect your streak. No real money, ever.",
-		icon: <FiAward size={20} />,
-		className: "md:col-span-4",
-		header: (
-			<p
-				aria-hidden="true"
-				className={`absolute right-8 top-2 hidden text-[9rem] font-extrabold leading-none tracking-tighter md:block ${accent}`}
-			>
-				+5
-			</p>
-		),
+		body: "Earn coins from check-ins, calming sessions and journal entries. Spend them on colour themes or a rest day that protects your streak. No real money, ever.",
 	},
 	{
+		icon: <FiFileText size={28} aria-hidden="true" />,
+		title: "Plain-language recaps",
+		body: "A short summary of your day, week or month, written on your phone from your own entries. No AI needed.",
+	},
+	{
+		icon: <FiWifiOff size={28} aria-hidden="true" />,
 		title: "Works offline",
-		description:
-			"Everything works with no signal and no account. Sync between devices is optional.",
-		icon: <FiWifiOff size={20} />,
-		className: "md:col-span-3",
+		body: "Everything works with no signal. An account is optional and only adds sync between devices.",
 	},
-	{
-		title: "Apple Health",
-		description:
-			"Save breathing sessions to Mindful Minutes when you choose to.",
-		icon: <FiHeart size={20} />,
-		className: "md:col-span-3",
-	},
-];
-
-const stats = [
-	{ big: "0", label: "ads" },
-	{ big: "0", label: "trackers" },
-	{ big: "0", label: "accounts needed" },
-	{ big: "100%", label: "on your phone by default" },
 ];
 
 const poses = [
@@ -237,7 +189,7 @@ export default function HomePage() {
 				<StickyScroll steps={[...steps]} />
 			</section>
 
-			{/* Bento */}
+			{/* Features */}
 			<section id="features" className="scroll-mt-16 bg-paper py-24 md:py-36">
 				<Reveal className="mx-auto mb-14 max-w-3xl px-6 text-center">
 					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
@@ -246,11 +198,21 @@ export default function HomePage() {
 						help every day.
 					</h2>
 				</Reveal>
-				<BentoGrid className="md:grid-cols-6">
-					{bento.map((b, i) => (
-						<BentoGridItem key={b.title} index={i} {...b} />
+				<div className="mx-auto grid max-w-5xl gap-x-16 px-6 md:grid-cols-2">
+					{features.map((f, i) => (
+						<Reveal key={f.title} delay={(i % 2) * 0.08}>
+							<div className="border-t border-black/10 py-9">
+								<div className="mb-4 text-[#1fa65a]">{f.icon}</div>
+								<h3 className="mb-2 text-2xl font-extrabold tracking-tight text-[#1d1d1f]">
+									{f.title}
+								</h3>
+								<p className="max-w-md text-lg leading-relaxed text-[#6e6e73]">
+									{f.body}
+								</p>
+							</div>
+						</Reveal>
 					))}
-				</BentoGrid>
+				</div>
 			</section>
 
 			{/* Privacy */}
@@ -271,20 +233,6 @@ export default function HomePage() {
 							leaves your phone.
 						</p>
 					</Reveal>
-					<div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4">
-						{stats.map((s, i) => (
-							<Reveal key={s.label} delay={i * 0.08}>
-								<div className="flex h-full flex-col items-center justify-center rounded-3xl bg-ink-2 px-4 py-10">
-									<p
-										className={`text-6xl font-extrabold tracking-tighter md:text-7xl ${accent}`}
-									>
-										{s.big}
-									</p>
-									<p className="mt-2 text-sm text-[#a1a1a6]">{s.label}</p>
-								</div>
-							</Reveal>
-						))}
-					</div>
 				</div>
 				<InfiniteMovingCards items={promises} className="mt-16" />
 			</section>
