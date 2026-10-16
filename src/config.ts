@@ -2,15 +2,29 @@ export const site = {
 	name: "Brain Pal: Mood & Calm",
 	shortName: "Brain Pal",
 	url: "https://usebrainpal.com",
+	/** <title> of the home page (keep under ~60 characters). */
+	title: "Brain Pal: Mood Diary, Breathing & Calm for iPhone",
+	/** Meta description (keep under ~160 characters). */
 	description:
-		"One-tap mood check-ins, a private journal, slow breathing and a gentle plan for worries. Free, no ads, no tracking, works without an account.",
+		"A free, private mood diary for iPhone: one-tap check-ins, guided breathing, a worry box and a gentle journal. No ads, no tracking. Join the waitlist.",
+	ogImage: {
+		url: "/og.png",
+		width: 1200,
+		height: 630,
+		alt: "Brain Pal: check in, breathe, take one small step, with the Home screen on an iPhone",
+	},
+	locale: "en_US",
 	logo: "/icon-192.png",
 	keywords: [
 		"Brain Pal",
 		"mood diary",
-		"calming tools",
+		"mood tracker",
+		"CBT thought record",
 		"breathing exercise",
+		"anxiety toolkit",
+		"worry time",
 		"private journal",
+		"iPhone app",
 	],
 	links: {
 		/** Swap for the real App Store URL at launch. */

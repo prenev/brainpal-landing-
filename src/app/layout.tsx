@@ -9,27 +9,49 @@ import "./globals.css";
 export const metadata: Metadata = {
 	metadataBase: new URL(site.url),
 	title: {
-		default: site.name,
-		template: `%s — ${site.name}`,
+		default: site.title,
+		template: `%s | ${site.shortName}`,
 	},
 	description: site.description,
+	applicationName: site.shortName,
 	keywords: [...site.keywords],
-	alternates: {
-		canonical: "/",
+	authors: [{ name: site.companyName, url: site.url }],
+	creator: site.companyName,
+	publisher: site.companyName,
+	category: "health",
+	alternates: { canonical: "/" },
+	manifest: "/manifest.json",
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			"max-image-preview": "large",
+			"max-snippet": -1,
+		},
 	},
 	openGraph: {
 		type: "website",
 		url: site.url,
 		siteName: site.name,
-		title: site.name,
+		locale: site.locale,
+		title: site.title,
 		description: site.description,
-		images: [{ url: "/og.png", width: 1200, height: 630 }],
+		images: [site.ogImage],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: site.name,
+		title: site.title,
 		description: site.description,
-		images: ["/og.png"],
+		images: [{ url: site.ogImage.url, alt: site.ogImage.alt }],
+	},
+	formatDetection: { telephone: false, email: false, address: false },
+	verification: {
+		google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+		other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+			? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+			: undefined,
 	},
 	icons: {
 		icon: [
