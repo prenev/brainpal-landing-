@@ -14,65 +14,55 @@ export const storeConfig = {
 } as const;
 
 export const site = {
-	name: "Your App Name",
-	url: "https://your-domain.com",
+	name: "Brain Pal: Mood & Calm",
+	url: "https://prenev.github.io/brain-pal/",
 	description:
-		"Here you can write a brief description of your application. Tell users about its main features and benefits in 1-2 sentences.",
+		"One-tap mood check-ins, a private journal, slow breathing and a gentle plan for worries. Free, no ads, no tracking, works without an account.",
 	logo: "/favicon.svg",
-	keywords: ["mobile app", "landing page", "nextjs", "react", "typescript"],
+	keywords: [
+		"Brain Pal",
+		"mood diary",
+		"calming tools",
+		"breathing exercise",
+		"private journal",
+	],
 	storeLinks: {
 		apple: "#",
-		google: "#",
+		google:
+			"mailto:hello@brainpal.app?subject=Notify%20me%20when%20Brain%20Pal%20launches",
 	},
 	rating: {
-		score: 4.8,
-		count: "1.2K",
+		score: 5,
+		count: "Coming soon",
 	},
 	ageRating: "4+",
-	version: "1.0.0",
-	minimumOS: "13.0",
-	releaseDate: "Jan 10, 2026",
-	social: [
-		{ url: "#", icon: "RiInstagramFill", label: "Instagram" },
-		{ url: "#", icon: "RiTelegram2Fill", label: "Telegram" },
-		{ url: "#", icon: "RiTwitterXFill", label: "X (Twitter)" },
-	] as SocialLink[],
+	version: "Coming soon",
+	minimumOS: "16.0",
+	releaseDate: "Coming soon",
+	companyName: "Brain Pal",
+	contactEmail: "hello@brainpal.app",
+	copyrightYear: 2026,
+	social: [] as SocialLink[],
 } as const;
 
 export const features: Feature[] = [
 	{
-		title: "Main Feature",
-		description: "Describe your main feature here. What makes it special?",
-		icon: "FiStar",
+		title: "Check in",
+		description:
+			"Tap a face to log your mood and add a quick note only when you want to.",
+		icon: "FiHeart",
 	},
 	{
-		title: "Lightning Fast",
+		title: "Calm down",
 		description:
-			"Optimized for speed so everything feels instant, even on older devices.",
+			"Use slow breathing or grounding in a couple of minutes to settle your body.",
 		icon: "FiZap",
 	},
 	{
-		title: "Offline Mode",
-		description: "All your data is available offline. No internet? No problem.",
-		icon: "FiBox",
-	},
-	{
-		title: "Private & Secure",
+		title: "Move forward",
 		description:
-			"End-to-end encryption keeps your data safe. We never sell your info.",
-		icon: "FiShield",
-	},
-	{
-		title: "Cloud Sync",
-		description:
-			"Stay in sync across all your devices. Changes appear everywhere instantly.",
-		icon: "FiCloud",
-	},
-	{
-		title: "Fully Customizable",
-		description:
-			"Tailor the experience to your workflow with powerful settings.",
-		icon: "FiSliders",
+			"Park a worry and choose one tiny next step with a gentle focus timer.",
+		icon: "FiTrendingUp",
 	},
 ];
 
@@ -83,115 +73,40 @@ export const screenshots: string[] = [
 	"/assets/screenshots/1.png",
 	"/assets/screenshots/1.png",
 	"/assets/screenshots/1.png",
-	"/assets/screenshots/1.png",
-	"/assets/screenshots/1.png",
 ];
 
-export const pricingTiers: PricingTier[] = [
-	{
-		name: "Free",
-		price: "$0",
-		period: "/month",
-		description: "Everything you need to get started. No credit card required.",
-		features: [
-			"Core app features",
-			"Up to 3 projects",
-			"Basic analytics dashboard",
-			"Community support",
-			"iOS & Android",
-		],
-		cta: "Download Free",
-		ctaHref: "#",
-	},
-	{
-		name: "Pro",
-		price: "$4.99",
-		period: "/month",
-		description:
-			"The full experience. Unlock every feature and remove all limits.",
-		features: [
-			"Everything in Free",
-			"Unlimited projects",
-			"Advanced analytics",
-			"Priority support",
-			"Cloud sync & backup",
-			"Early access to new features",
-		],
-		cta: "Start Free Trial",
-		ctaHref: "#",
-		highlighted: true,
-		badge: "Most Popular",
-	},
-	{
-		name: "Teams",
-		price: "Custom",
-		description:
-			"For organizations that need advanced controls, SSO, and dedicated support.",
-		features: [
-			"Everything in Pro",
-			"Team collaboration tools",
-			"Admin dashboard",
-			"SSO & access controls",
-			"Dedicated account manager",
-			"Custom integrations & API",
-		],
-		cta: "Contact Sales",
-		ctaHref: "mailto:hello@example.com",
-	},
-];
+export const pricingTiers: PricingTier[] = [];
 
-export const reviews: Review[] = [
-	{
-		author: "Sarah K.",
-		rating: 5,
-		text: "This app has completely transformed how I manage my daily tasks. The interface is intuitive and the performance is outstanding!",
-	},
-	{
-		author: "James M.",
-		rating: 5,
-		text: "I've tried dozens of similar apps, but this one stands out with its unique features and reliability. Highly recommended!",
-	},
-	{
-		author: "Elena T.",
-		rating: 4,
-		text: "Great app with impressive functionality. The recent update made it even better. Just a few minor UI improvements would make it perfect.",
-	},
-	{
-		author: "Michael R.",
-		rating: 5,
-		text: "Customer support is exceptional. Had an issue and they resolved it within hours. The app itself is fantastic too!",
-	},
-];
+export const reviews: Review[] = [];
 
 export const faqs: FAQItem[] = [
 	{
-		question: "Is the app free to download?",
+		question: "Is it really free?",
 		answer:
-			"Yes! The app is free to download on both the App Store and Google Play. A Pro plan is available for users who want access to advanced features.",
+			"Yes. Brain Pal is free, with no ads, no subscriptions, and no in-app purchases.",
 	},
 	{
-		question: "Which platforms are supported?",
+		question: "Do I need an account?",
 		answer:
-			"The app is available for iOS 13.0+ and Android 8.0+. A web version is coming soon.",
+			"No. It works fully on your phone. An account is optional and only adds sync between devices.",
 	},
 	{
-		question: "Can I use the app offline?",
+		question: "Where is my data stored?",
 		answer:
-			"Core features work fully offline. Your data syncs automatically when you reconnect to the internet.",
+			"By default, on your device. If you choose an account, data is stored securely so only you can access it, and you can delete your account and data in the app.",
 	},
 	{
-		question: "How do I restore my purchases?",
+		question: "Does it use AI?",
 		answer:
-			"Open the app, go to Settings → Subscription, and tap Restore Purchases. Make sure you're signed in with the same account used for the original purchase.",
+			"Only if you add your own Google Gemini key. AI helpers are off by default.",
 	},
 	{
-		question: "Is my data private and secure?",
+		question: "Is it a replacement for therapy?",
 		answer:
-			"Absolutely. Your data is encrypted in transit and at rest. We never sell or share your personal information with third parties. See our Privacy Policy for full details.",
+			"No. Brain Pal is a self-help companion and does not diagnose or treat any condition.",
 	},
 	{
-		question: "How do I reach support?",
-		answer:
-			"Tap Help in the app settings or email us at support@example.com. We respond within 24 hours on business days.",
+		question: "Android?",
+		answer: "Use the web version and add it to your home screen.",
 	},
 ];

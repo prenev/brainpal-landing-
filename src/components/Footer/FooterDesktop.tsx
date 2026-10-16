@@ -41,6 +41,12 @@ const FooterDesktop = ({ name, logo }: FooterProps) => (
 			<p className="max-w-60 text-sm leading-relaxed text-body">
 				{site.description}
 			</p>
+			<a
+				href={`mailto:${site.contactEmail}`}
+				className="text-sm text-body transition-colors hover:text-heading"
+			>
+				{site.contactEmail}
+			</a>
 			<div className="flex flex-wrap gap-2">
 				<a
 					href={site.storeLinks.apple}
@@ -76,7 +82,7 @@ const FooterDesktop = ({ name, logo }: FooterProps) => (
 				</a>
 			</div>
 			<p className="mt-auto text-xs text-gray-400 dark:text-white/25">
-				© {new Date().getFullYear()} {name}. All rights reserved.
+				© {site.copyrightYear} {site.companyName}
 			</p>
 		</motion.div>
 
