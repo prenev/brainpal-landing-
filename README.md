@@ -94,19 +94,18 @@ Edit the Markdown files directly — they auto-render on the page:
 
 ---
 
-## Interest form (email sign-ups)
+## Waitlist form (email sign-ups)
 
-The "Join the waitlist" form on the home page (`src/components/InterestForm`) uses
-[react-hook-form](https://react-hook-form.com) + [zod](https://zod.dev) and posts to
-[Web3Forms](https://web3forms.com), which emails every submission to you.
+The "Join the waitlist" form (`src/components/InterestForm`, `src/lib/waitlist.ts`) uses
+[react-hook-form](https://react-hook-form.com) + [zod](https://zod.dev) and inserts a row into the
+`waitlist_signups` table of the `brain-pal` Supabase project (migration in the `brain-pal` repo).
 
-1. Create a free access key at web3forms.com (enter the email that should get the sign-ups).
-2. If your Web3Forms plan allows it, restrict the key to `wobbi.app` in its dashboard.
-3. (Optional override; the deploy workflow already has a default key.) In GitHub: **Settings → Secrets and variables → Actions → Variables → New repository variable**,
-   name `WEB3FORMS_KEY`, value = your access key. (It is a public key by design, so a variable is fine.)
-4. Re-run **Deploy to GitHub Pages**. Without the variable the form shows "Sign-ups aren't switched on yet".
-
-Locally: `NEXT_PUBLIC_WEB3FORMS_KEY=your-key pnpm dev`.
+- The browser uses the project's **publishable** key. Row-level security lets that role **only insert**: it cannot read,
+  change or delete rows, and every column is validated by the database. Read sign-ups in the Supabase dashboard (Table editor).
+- A repeated email counts as success, so the form never reveals who is on the list.
+- The URL and key are set in `.github/workflows/deploy-pages.yml` (override with repo variables `SUPABASE_URL` and
+  `SUPABASE_PUBLISHABLE_KEY`). Locally: `NEXT_PUBLIC_SUPABASE_URL=... NEXT_PUBLIC_SUPABASE_KEY=... pnpm dev`.
+- There is no email notification yet: check the table, or add a Supabase Database Webhook / Edge Function with your own email provider.
 
 ## Phone mockups
 
