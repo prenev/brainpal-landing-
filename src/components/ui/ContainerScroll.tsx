@@ -31,7 +31,7 @@ export const ContainerScroll = ({
 				)}
 				<motion.div
 					style={{ rotateX: rotate, scale, y: lift }}
-					className="mx-auto w-[min(78vw,320px)] md:w-[360px]"
+					className="mx-auto w-[min(82vw,340px)] md:w-[400px]"
 				>
 					{children}
 				</motion.div>

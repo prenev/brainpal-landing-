@@ -94,6 +94,33 @@ Edit the Markdown files directly — they auto-render on the page:
 
 ---
 
+## Interest form (email sign-ups)
+
+The "Notify me" form on the home page (`src/components/InterestForm`) uses
+[react-hook-form](https://react-hook-form.com) + [zod](https://zod.dev) and posts to
+[Web3Forms](https://web3forms.com), which emails every submission to you.
+
+1. Create a free access key at web3forms.com (enter the email that should get the sign-ups).
+2. In the Web3Forms dashboard, restrict the key to `usebrainpal.com`.
+3. In GitHub: **Settings → Secrets and variables → Actions → Variables → New repository variable**,
+   name `WEB3FORMS_KEY`, value = your access key. (It is a public key by design, so a variable is fine.)
+4. Re-run **Deploy to GitHub Pages**. Without the variable the form shows "Sign-ups aren't switched on yet".
+
+Locally: `NEXT_PUBLIC_WEB3FORMS_KEY=your-key pnpm dev`.
+
+## Phone mockups
+
+The iPhone images in `public/assets/mockups/` are generated, not hand-made:
+
+```bash
+python3 scripts/make-mockups.py public/assets/screens public/assets/mockups   # needs Pillow
+```
+
+`public/assets/screens/` holds the bare app screens; the script draws the frame, Dynamic Island,
+status bar and home indicator around each one.
+
+---
+
 ## Deploy
 
 ### GitHub Pages (included)
