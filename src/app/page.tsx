@@ -135,8 +135,7 @@ export default function HomePage() {
 							A private mood diary and calming toolkit for anxious days and
 							ordinary ones.
 						</p>
-						<div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-							<AppStoreButton />
+						<div className="mt-9 flex justify-center">
 							<a href={notifyHref} className={waitlistButton}>
 								Join the waitlist
 							</a>
