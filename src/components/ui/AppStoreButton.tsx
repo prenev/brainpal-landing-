@@ -1,29 +1,42 @@
 import { FaApple } from "react-icons/fa";
 import { cn } from "@/lib/cn";
 
-/** "Coming soon on the App Store" badge. Swap href for the real URL at launch. */
+/**
+ * "Coming soon on the App Store" badge. Not a link until the app is live:
+ * pass `href` at launch (and swap in Apple's official badge).
+ */
 export const AppStoreButton = ({
 	href,
 	className,
 }: {
-	href: string;
+	href?: string;
 	className?: string;
-}) => (
-	<a
-		href={href}
-		className={cn(
-			"inline-flex items-center gap-3 rounded-2xl bg-white px-6 py-3 text-ink transition-opacity hover:opacity-90",
-			className,
-		)}
-	>
-		<FaApple aria-hidden="true" className="h-8 w-8 shrink-0" />
-		<span className="text-left leading-tight">
-			<span className="block text-xs font-semibold opacity-70">
-				Coming soon on the
+}) => {
+	const cls = cn(
+		"inline-flex h-[68px] items-center gap-3 rounded-2xl bg-white px-6 text-ink",
+		href ? "transition-opacity hover:opacity-90" : "cursor-default",
+		className,
+	);
+	const inner = (
+		<>
+			<FaApple aria-hidden="true" className="h-8 w-8 shrink-0" />
+			<span className="text-left leading-tight">
+				<span className="block text-xs font-semibold opacity-70">
+					Coming soon on the
+				</span>
+				<span className="block text-xl font-extrabold tracking-tight">
+					App Store
+				</span>
 			</span>
-			<span className="block text-xl font-extrabold tracking-tight">
-				App Store
-			</span>
+		</>
+	);
+	return href ? (
+		<a href={href} className={cls}>
+			{inner}
+		</a>
+	) : (
+		<span role="img" aria-label="Coming soon on the App Store" className={cls}>
+			{inner}
 		</span>
-	</a>
-);
+	);
+};

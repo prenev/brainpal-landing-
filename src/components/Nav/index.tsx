@@ -37,7 +37,7 @@ const Nav = () => (
 				href="#notify"
 				className="rounded-full bg-mint px-4 py-1.5 text-sm font-semibold text-ink transition-opacity hover:opacity-85"
 			>
-				Get notified
+				Join the waitlist
 			</a>
 		</nav>
 	</header>

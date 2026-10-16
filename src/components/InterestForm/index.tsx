@@ -77,7 +77,7 @@ const InterestForm = () => {
 				},
 				body: JSON.stringify({
 					access_key: accessKey,
-					subject: `Brain Pal interest: ${v.email}`,
+					subject: `Brain Pal waitlist: ${v.email}`,
 					from_name: "Brain Pal website",
 					email: v.email,
 					name: v.name || "(not given)",
@@ -109,7 +109,7 @@ const InterestForm = () => {
 					className="mb-4 h-32 w-32 object-contain"
 				/>
 				<h3 className="text-3xl font-semibold tracking-tight text-white">
-					You're on the list.
+					You're on the waitlist.
 				</h3>
 				<p className="mt-3 max-w-sm text-lg text-[#a1a1a6]">
 					Thank you. We'll email you when Brain Pal is ready, and only then.
@@ -244,7 +244,7 @@ const InterestForm = () => {
 				disabled={isSubmitting}
 				className="w-full rounded-full bg-mint px-7 py-3.5 text-[17px] font-semibold text-ink transition-opacity hover:opacity-85 disabled:opacity-50"
 			>
-				{isSubmitting ? "Sending…" : "Notify me"}
+				{isSubmitting ? "Joining…" : "Join the waitlist"}
 			</button>
 
 			{state === "error" && (

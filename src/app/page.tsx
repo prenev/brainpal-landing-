@@ -22,6 +22,8 @@ import { faqs, promises, steps } from "@/config";
 const accent = "text-mint";
 
 const notifyHref = "#notify";
+const waitlistButton =
+	"inline-flex h-[68px] items-center justify-center rounded-2xl bg-mint px-8 text-xl font-extrabold tracking-tight text-ink transition-opacity hover:opacity-85";
 
 const Chip = ({ children }: { children: ReactNode }) => (
 	<span className="rounded-full bg-paper px-3 py-1.5 text-[13px] font-medium text-[#1d1d1f]">
@@ -133,13 +135,10 @@ export default function HomePage() {
 							A private mood diary and calming toolkit for anxious days and
 							ordinary ones.
 						</p>
-						<div className="mt-9 flex flex-col items-center gap-4">
-							<AppStoreButton href={notifyHref} />
-							<a
-								href={notifyHref}
-								className="text-[17px] text-[#2997ff] hover:underline"
-							>
-								Get notified when it launches ›
+						<div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+							<AppStoreButton />
+							<a href={notifyHref} className={waitlistButton}>
+								Join the waitlist
 							</a>
 						</div>
 						<p className="mt-6 text-sm text-[#86868b]">
@@ -308,15 +307,19 @@ export default function HomePage() {
 							<span className={accent}>today.</span>
 						</h2>
 						<p className="mt-6 max-w-md text-xl leading-relaxed text-[#a1a1a6]">
-							Tell us what would help most and we'll email you the moment Brain
-							Pal is on the App Store. Free, private, and built for small steps.
+							Join the waitlist and tell us what would help most. We'll email
+							you the moment Brain Pal is on the App Store. Free, private, and
+							built for small steps.
 						</p>
-						<div className="mt-8">
-							<AppStoreButton href="#notify" />
-							<p className="mt-3 text-sm text-[#86868b]">
-								iPhone first. Android is planned for later.
-							</p>
+						<div className="mt-8 flex flex-col gap-4 sm:flex-row">
+							<AppStoreButton />
+							<a href={notifyHref} className={waitlistButton}>
+								Join the waitlist
+							</a>
 						</div>
+						<p className="mt-3 text-sm text-[#86868b]">
+							iPhone first. Android is planned for later.
+						</p>
 					</Reveal>
 					<Reveal delay={0.1}>
 						<InterestForm />
