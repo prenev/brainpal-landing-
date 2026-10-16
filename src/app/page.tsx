@@ -169,7 +169,7 @@ export default function HomePage() {
 				<div className="relative z-10 mx-auto max-w-5xl px-6">
 					<img
 						src="/icon-512.png"
-						alt="Brain Pal"
+						alt="Wobbi"
 						width={96}
 						height={96}
 						className="mx-auto mb-8 h-24 w-24 rounded-[26px]"
@@ -205,7 +205,7 @@ export default function HomePage() {
 				<ContainerScroll>
 					<PhoneFrame
 						src="/assets/mockups/checkin.webp"
-						alt="Brain Pal home screen"
+						alt="Wobbi home screen"
 						priority
 					/>
 				</ContainerScroll>
@@ -217,8 +217,8 @@ export default function HomePage() {
 					<p className="text-3xl font-bold leading-[1.15] tracking-tight text-[#86868b] md:text-5xl">
 						Some days are heavy.{" "}
 						<span className="text-[#1d1d1f]">
-							Brain Pal gives you one tap to say so, one minute to settle, and
-							one small thing to do next.
+							Wobbi gives you one tap to say so, one minute to settle, and one
+							small thing to do next.
 						</span>{" "}
 						No streak guilt. No noise. Just a soft place to land.
 					</p>
@@ -289,14 +289,14 @@ export default function HomePage() {
 				<InfiniteMovingCards items={promises} className="mt-16" />
 			</section>
 
-			{/* Meet Pal */}
+			{/* Meet Wobbi */}
 			<section id="meet-pal" className="scroll-mt-16 bg-paper py-24 md:py-36">
 				<Reveal className="mx-auto mb-16 max-w-3xl px-6 text-center">
 					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
-						Meet Pal.
+						Meet Wobbi.
 					</h2>
 					<p className="mx-auto mt-5 max-w-xl text-xl leading-relaxed text-[#6e6e73]">
-						Your soft sidekick. Pal cheers you on when you show up, keeps you
+						Your soft sidekick. Wobbi cheers you on when you show up, keeps you
 						company when things are hard, and never guilts you for missing a
 						day.
 					</p>
@@ -363,8 +363,8 @@ export default function HomePage() {
 						</h2>
 						<p className="mt-6 max-w-md text-xl leading-relaxed text-[#a1a1a6]">
 							Join the waitlist and tell us what would help most. We'll email
-							you the moment Brain Pal is on the App Store. Free, private, and
-							built for small steps.
+							you the moment Wobbi is on the App Store. Free, private, and built
+							for small steps.
 						</p>
 						<div className="mt-8 flex flex-col gap-4 sm:flex-row">
 							<AppStoreButton />

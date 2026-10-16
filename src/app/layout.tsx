@@ -97,7 +97,7 @@ export default function RootLayout({
 			<body className="bg-gray-50 text-gray-900 dark:bg-[#060606] dark:text-white">
 				<Nav />
 				{children}
-				<Footer name={site.name} logo={site.logo} />
+				<Footer name={site.shortName} logo={site.logo} />
 				<BackToTop />
 			</body>
 		</html>

@@ -2,7 +2,7 @@ export const NAV_LINKS = [
 	{ label: "How it works", href: "/#how-it-works" },
 	{ label: "Features", href: "/#features" },
 	{ label: "Privacy", href: "/#privacy" },
-	{ label: "Meet Pal", href: "/#meet-pal" },
+	{ label: "Meet Wobbi", href: "/#meet-pal" },
 	{ label: "FAQ", href: "/#faq" },
 ];
 

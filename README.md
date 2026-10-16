@@ -101,7 +101,7 @@ The "Join the waitlist" form on the home page (`src/components/InterestForm`) us
 [Web3Forms](https://web3forms.com), which emails every submission to you.
 
 1. Create a free access key at web3forms.com (enter the email that should get the sign-ups).
-2. If your Web3Forms plan allows it, restrict the key to `usebrainpal.com` in its dashboard.
+2. If your Web3Forms plan allows it, restrict the key to `wobbi.app` in its dashboard.
 3. (Optional override; the deploy workflow already has a default key.) In GitHub: **Settings → Secrets and variables → Actions → Variables → New repository variable**,
    name `WEB3FORMS_KEY`, value = your access key. (It is a public key by design, so a variable is fine.)
 4. Re-run **Deploy to GitHub Pages**. Without the variable the form shows "Sign-ups aren't switched on yet".
@@ -128,11 +128,11 @@ Everything is generated at build time from `src/config.ts` (`site.title`, `site.
 - title, description, canonical URL, robots, Open Graph and Twitter card tags (`src/app/layout.tsx`)
 - JSON-LD structured data: Organization, WebSite, MobileApplication and FAQPage (`src/app/page.tsx`)
 - `sitemap.xml` and `robots.txt` (`src/app/sitemap.ts`, `src/app/robots.ts`)
-- 1200x630 share image `public/og.png`, favicons and a web manifest
+- 1200x630 share image `public/og-share.png`, favicons and a web manifest
 
 After the first deploy, tell search engines about the site:
 
-1. Google Search Console: add `usebrainpal.com` as a property, then submit `https://usebrainpal.com/sitemap.xml`.
+1. Google Search Console: add `wobbi.app` as a property, then submit `https://wobbi.app/sitemap.xml`.
    For the HTML-tag method, set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` (and `NEXT_PUBLIC_BING_SITE_VERIFICATION`
    for Bing Webmaster Tools) as repo variables and pass them to the build step.
 2. Check link previews with the Facebook Sharing Debugger and the LinkedIn Post Inspector (X and iMessage read the same tags).
@@ -153,9 +153,9 @@ The workflow builds `out/` and publishes to:
 
 - `https://<your-user-or-org>.github.io/<repository-name>/`
 
-### Custom domain: `usebrainpal.com` (Namecheap)
+### Custom domain: `wobbi.app` (Namecheap)
 
-This repo includes `public/CNAME` set to `usebrainpal.com`.
+This repo includes `public/CNAME` set to `wobbi.app`.
 
 In Namecheap **Advanced DNS**, set:
 
@@ -170,7 +170,7 @@ In Namecheap **Advanced DNS**, set:
 Then in GitHub:
 
 1. Go to **Settings → Pages**.
-2. Set **Custom domain** to `usebrainpal.com`.
+2. Set **Custom domain** to `wobbi.app`.
 3. Enable **Enforce HTTPS** after DNS is verified.
 
 ### Other static hosts
