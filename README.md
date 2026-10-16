@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/favicon.svg" alt="App Landing" width="96" height="96">
+<img src="public/icon-192.png" alt="App Landing" width="96" height="96">
 
 # app-landing
 
@@ -59,7 +59,7 @@ Everything is in one file: **`src/config.ts`**
 export const site = {
   name: "Your App Name",
   description: "...",
-  logo: "/favicon.svg",
+  logo: "/icon-192.png",
   storeLinks: { apple: "#", google: "#" },
   rating: { score: 4.8, count: "1.2K" },
   version: "1.0.0",

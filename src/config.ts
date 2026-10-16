@@ -4,7 +4,7 @@ export const site = {
 	url: "https://usebrainpal.com",
 	description:
 		"One-tap mood check-ins, a private journal, slow breathing and a gentle plan for worries. Free, no ads, no tracking, works without an account.",
-	logo: "/favicon.svg",
+	logo: "/icon-192.png",
 	keywords: [
 		"Brain Pal",
 		"mood diary",
