@@ -11,7 +11,7 @@ export const site = {
 		url: "/og-share.png",
 		width: 1200,
 		height: 630,
-		alt: "Wobbi: check in, breathe, take one small step, with the Home screen on an iPhone",
+		alt: "Wobbi: check in, breathe, take one small step, with the Home and breathing screens on iPhones",
 	},
 	locale: "en_US",
 	logo: "/icon-192.png",
@@ -144,9 +144,9 @@ export const plans = {
 		"Exporting or deleting your data",
 	],
 	pro: [
+		"Everything in Free",
 		"Before-and-after proof cards, showing how much calming helped",
 		"Weekly and monthly summaries",
-		"7-day free trial, then a monthly subscription through the App Store",
 		"Cancel any time in your App Store settings",
 	],
 };

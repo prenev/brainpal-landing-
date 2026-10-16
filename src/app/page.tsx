@@ -335,41 +335,78 @@ export default function HomePage() {
 			</section>
 
 			{/* Plans */}
-			<section id="pricing" className="scroll-mt-16 bg-white py-24 md:py-36">
-				<Reveal className="mx-auto mb-14 max-w-3xl px-6 text-center">
+			<section
+				id="pricing"
+				className="scroll-mt-16 bg-white px-6 py-24 md:py-36"
+			>
+				<Reveal className="mx-auto mb-14 max-w-3xl text-center">
 					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
-						Free to start.
-						<br />
-						<span className="text-[#1fa65a]">Pro is optional.</span>
+						Simple pricing.
 					</h2>
-					<p className="mx-auto mt-6 max-w-xl text-xl leading-relaxed text-[#6e6e73]">
-						Everything that helps you calm down is free. Pro only adds two
-						extras.
+					<p className="mx-auto mt-5 max-w-xl text-xl leading-relaxed text-[#6e6e73]">
+						Everything that helps you calm down is free. Pro adds two extras.
 					</p>
 				</Reveal>
-				<div className="mx-auto grid max-w-4xl gap-12 px-6 md:grid-cols-2">
+				<div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
 					{[
-						{ name: "Free", list: plans.free },
-						{ name: "Wobbi Pro", list: plans.pro },
-					].map((p) => (
-						<Reveal key={p.name}>
-							<h3 className="mb-5 text-2xl font-extrabold text-[#1d1d1f]">
-								{p.name}
-							</h3>
-							<ul className="space-y-3">
-								{p.list.map((item) => (
-									<li
-										key={item}
-										className="flex gap-3 text-[17px] leading-snug text-[#6e6e73]"
-									>
-										<FiCheck
-											className="mt-1 shrink-0 text-[#1fa65a]"
-											aria-hidden="true"
-										/>
-										{item}
-									</li>
-								))}
-							</ul>
+						{
+							name: "Free",
+							price: "$0",
+							note: "forever, no card needed",
+							list: plans.free,
+							cta: "Join the waitlist",
+							pro: false,
+						},
+						{
+							name: "Wobbi Pro",
+							price: "7 days free",
+							note: "then a monthly App Store subscription. Price announced at launch.",
+							list: plans.pro,
+							cta: "Join the waitlist",
+							pro: true,
+						},
+					].map((p, i) => (
+						<Reveal key={p.name} delay={i * 0.08}>
+							<div
+								className={`flex h-full flex-col rounded-[28px] p-8 ${p.pro ? "bg-ink text-white" : "border border-black/10 bg-paper text-[#1d1d1f]"}`}
+							>
+								<div className="flex items-center justify-between">
+									<h3 className="text-xl font-extrabold">{p.name}</h3>
+									{p.pro && (
+										<span className="rounded-full bg-mint px-3 py-1 text-xs font-extrabold text-ink">
+											Optional
+										</span>
+									)}
+								</div>
+								<p className="mt-5 text-5xl font-extrabold tracking-tight">
+									{p.price}
+								</p>
+								<p
+									className={`mt-1 min-h-[3rem] text-[15px] ${p.pro ? "text-[#a1a1a6]" : "text-[#6e6e73]"}`}
+								>
+									{p.note}
+								</p>
+								<a
+									href={notifyHref}
+									className={`mt-7 inline-flex h-12 items-center justify-center rounded-full text-base font-bold transition-opacity hover:opacity-85 ${p.pro ? "bg-mint text-ink" : "bg-ink text-white"}`}
+								>
+									{p.cta}
+								</a>
+								<ul className="mt-8 space-y-3">
+									{p.list.map((item) => (
+										<li
+											key={item}
+											className={`flex gap-3 text-[16px] leading-snug ${p.pro ? "text-[#d2d2d7]" : "text-[#6e6e73]"}`}
+										>
+											<FiCheck
+												className={`mt-0.5 shrink-0 ${p.pro ? "text-mint" : "text-[#1fa65a]"}`}
+												aria-hidden="true"
+											/>
+											{item}
+										</li>
+									))}
+								</ul>
+							</div>
 						</Reveal>
 					))}
 				</div>
