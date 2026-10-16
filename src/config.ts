@@ -26,7 +26,8 @@ export const site = {
 		"private journal",
 		"iPhone app",
 		"widgets",
-		"focus guard",
+		"focus timer",
+		"pomodoro",
 	],
 	links: {
 		/** Swap for the real App Store URL at launch. */
@@ -41,7 +42,7 @@ export const steps = [
 	{
 		eyebrow: "Check in",
 		title: "One tap to say how you feel.",
-		body: "Tap a face and it's logged. Your streak, daily anchors and today's entry sit right on Home.",
+		body: "Tap a face and it's logged. Home also holds your daily anchors, a focus block, a journal prompt and your parked worries.",
 		image: "/assets/mockups/checkin.webp",
 		alt: "Wobbi home screen with the streak, tools, daily anchors and today's mood entry",
 	},
@@ -67,11 +68,11 @@ export const steps = [
 		alt: "Wobbi SOS screen saying you're safe, let's slow things down, with a 0 to 10 anxiety slider",
 	},
 	{
-		eyebrow: "Journal",
-		title: "A private place to write.",
-		body: "Feels like your notes app, with a gentle prompt when words are hard to find. A line is enough.",
-		image: "/assets/mockups/journal.webp",
-		alt: "Wobbi journal with a prompt and a small-wins entry",
+		eyebrow: "Focus",
+		title: "One calm block at a time.",
+		body: "A pomodoro timer with Wobbi beside you. Pick a task from your to-do list, finish the block, take a proper break, and watch your week add up.",
+		image: "/assets/mockups/focus.webp",
+		alt: "Wobbi focus timer showing 25:00 with a ring of stars around Wobbi at a laptop",
 	},
 ] as const;
 
@@ -81,7 +82,13 @@ export const moreInside = [
 		title: "Daily anchors",
 		body: "Up to five small habits. Some tick themselves, like a breathing session.",
 		image: "/assets/mockups/anchors.webp",
-		alt: "Wobbi daily anchors with slow breathing, walk, sunlight and water",
+		alt: "Wobbi daily anchors with ideas such as slow breathing, walk, sunlight and water",
+	},
+	{
+		title: "A to-do list that fits",
+		body: "Add what you want to get done, pick one for the next focus block, and see how many pomodoros each task took.",
+		image: "/assets/mockups/todo.webp",
+		alt: "Wobbi to-do list with two open tasks and a button to add a new one",
 	},
 	{
 		title: "Sleep, from Apple Health",
@@ -90,16 +97,10 @@ export const moreInside = [
 		alt: "Wobbi sleep screen showing last night and a seven-night chart",
 	},
 	{
-		title: "Focus guard",
-		body: "Pick the apps that eat your time. They stay paused until you earn a few minutes with push-ups, squats, a walk, breathing or a journal line.",
-		image: "/assets/mockups/guard.webp",
-		alt: "Wobbi focus guard push-up challenge with a rep counter",
-	},
-	{
-		title: "Wobbi stickers",
-		body: "Sixteen stickers for Messages, WhatsApp and anything else. Free.",
-		image: "/assets/mockups/stickers.webp",
-		alt: "Grid of sixteen Wobbi stickers",
+		title: "Wobbi's shop",
+		body: "Earn coins for showing up and dress Wobbi in hats, bows and colours. No real money, ever.",
+		image: "/assets/mockups/shop.webp",
+		alt: "Wobbi's Shop showing a crowned Wobbi, a coin balance and wardrobe items",
 	},
 ] as const;
 
@@ -138,8 +139,8 @@ export const plans = {
 		"Mood check-ins, thought records, journal and worry time",
 		"Calendar, reminders, daily anchors and today's summary",
 		"Widgets, Live Activity and Control Center controls",
-		"Coins, themes and Wobbi stickers",
-		"Focus guard and sleep insights",
+		"Coins, the shop, achievements and Wobbi stickers",
+		"Focus timer, to-do list and sleep insights",
 		"Sync between your devices",
 		"Exporting or deleting your data",
 	],
@@ -175,12 +176,12 @@ export const faqs = [
 	{
 		question: "What are the widgets and controls?",
 		answer:
-			"There are 14 Home Screen widgets, four of which also work on the Lock Screen: mood check-in, daily anchors, streak, breathe, SOS, worry jar, journal prompt, sleep, focus guard and more. There is also a Live Activity for breathing and focus timers, and four Control Center controls: SOS, Breathe, Park a worry and Focus guard. They show numbers and a few words, never what you wrote. Widgets need iOS 17 and controls need iOS 18.",
+			"There are 14 Home Screen widgets, four of which also work on the Lock Screen: mood check-in, daily anchors, streak, breathe, SOS, worry jar, journal prompt, sleep, focus and more. There is also a Live Activity for breathing and focus timers, and four Control Center controls: SOS, Breathe, Park a worry and Focus. They show numbers and a few words, never what you wrote. Widgets need iOS 17 and controls need iOS 18.",
 	},
 	{
-		question: "What is Focus guard?",
+		question: "What is the Focus timer?",
 		answer:
-			"It's optional and on iPhone only. You pick apps with Apple's own picker, and they stay paused until you earn a few minutes in Wobbi with a quick activity like push-ups, squats, a walk, breathing or a journal line. Wobbi doesn't see which apps you use, and the rep counter runs on the honour system. iOS lets you turn Screen Time restrictions off, so it's a nudge you set up for yourself, not parental control.",
+			"A pomodoro timer inside Wobbi. Pick a preset (Classic, Gentle or Deep), choose a task from your to-do list, and work in blocks with short and long breaks. You can set a daily goal and see your blocks and minutes for the week. Finished blocks earn coins like other things you do in the app.",
 	},
 	{
 		question: "Does it use AI?",

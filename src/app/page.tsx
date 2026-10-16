@@ -104,7 +104,7 @@ const jsonLd = {
 				"Home Screen and Lock Screen widgets",
 				"Live Activity and Control Center controls",
 				"Siri and Shortcuts",
-				"Focus guard",
+				"Focus timer and to-do list",
 				"Sleep insights from Apple Health",
 			],
 			publisher: { "@id": `${site.url}/#organization` },
@@ -258,7 +258,7 @@ export default function HomePage() {
 						</h3>
 						<p className="mt-4 text-lg leading-relaxed text-[#a1a1a6]">
 							Four Control Center buttons (iOS 18): SOS, Breathe, Park a worry
-							and Focus guard.
+							and Focus.
 						</p>
 						<div className="mt-6">
 							<Controls />

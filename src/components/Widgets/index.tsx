@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import { FiAlertCircle, FiCloud, FiShield, FiWind } from "react-icons/fi";
+import { FiAlertCircle, FiClock, FiCloud, FiWind } from "react-icons/fi";
 import { cn } from "@/lib/cn";
 
 /*
@@ -215,31 +215,28 @@ const Sleep = () => (
 	</Tile>
 );
 
-const Guard = () => (
-	<Tile size="small" bg="#20203a" label="Focus guard widget">
+const Focus = () => (
+	<Tile size="small" bg="#123f33" label="Focus widget">
 		<Pal
-			name="flex"
+			name="focus"
 			size={66}
 			className="absolute bottom-[10px] right-[-4px]"
 		/>
 		<div className="relative flex h-full flex-col">
 			<div className="flex items-center justify-between">
-				<Kicker>Brain rot</Kicker>
-				<Emo name="shield" size={20} />
+				<Kicker>Focus</Kicker>
+				<Emo name="hourglass" size={20} />
 			</div>
-			<span className={cn("mt-0.5 text-[17px] font-black", text)}>
-				3 apps paused
-			</span>
-			<span className={cn("text-[12px] font-bold", muted)}>2 beaten today</span>
-			<div className="mt-auto flex items-baseline gap-[3px]">
+			<div className="mt-0.5 flex items-baseline gap-[3px]">
 				<span
-					className="text-[28px] font-black leading-none"
+					className="text-[34px] font-black leading-none"
 					style={{ color: green }}
 				>
-					55
+					2
 				</span>
-				<span className={cn("text-[11px] font-bold", muted)}>reps</span>
+				<span className={cn("text-[15px] font-black", muted)}>/4</span>
 			</div>
+			<span className={cn("text-[12px] font-bold", text)}>50 min focused</span>
 		</div>
 	</Tile>
 );
@@ -430,7 +427,7 @@ export const WidgetWall = () => (
 		<Journal />
 		<Week />
 		<Sleep />
-		<Guard />
+		<Focus />
 		<CalmKit />
 	</div>
 );
@@ -518,7 +515,7 @@ const controls = [
 	{ label: "SOS", icon: <FiAlertCircle size={28} />, tint: "#ff5d73" },
 	{ label: "Breathe", icon: <FiWind size={28} />, tint: green },
 	{ label: "Park a worry", icon: <FiCloud size={28} />, tint: "#4aa8ff" },
-	{ label: "Focus guard", icon: <FiShield size={28} />, tint: "#ffa63d" },
+	{ label: "Focus", icon: <FiClock size={28} />, tint: "#ffa63d" },
 ];
 
 export const Controls = () => (
