@@ -48,16 +48,9 @@ export const steps = [
 	{
 		eyebrow: "Think it through",
 		title: "Walk through a worry with Wobbi.",
-		body: "A step-by-step entry: how you feel, what happened, and what went through your mind. Wobbi points out common thinking traps.",
+		body: "A step-by-step entry: how you feel, what happened, and what went through your mind. Wobbi points out common thinking traps, then helps you find a kinder thought.",
 		image: "/assets/mockups/think.webp",
 		alt: "Wobbi thought entry listing common thinking traps like catastrophizing and mind reading",
-	},
-	{
-		eyebrow: "Be kinder",
-		title: "Then find a kinder thought.",
-		body: "Ask what you'd tell a friend, then re-rate how strong it feels and watch the number come down.",
-		image: "/assets/mockups/kinder.webp",
-		alt: "Wobbi asking what you would tell a friend who had this thought, with helpful questions",
 	},
 	{
 		eyebrow: "Calm down",
@@ -72,20 +65,6 @@ export const steps = [
 		body: "The red siren is on Home and Breathe. Rate how you feel, pick slow breathing, grounding or box breathing, and see the change.",
 		image: "/assets/mockups/sos.webp",
 		alt: "Wobbi SOS screen saying you're safe, let's slow things down, with a 0 to 10 anxiety slider",
-	},
-	{
-		eyebrow: "Worry time",
-		title: "Park it. Plan one small step.",
-		body: "Write the worry down for later. At worry time, choose to plan around it or let it go.",
-		image: "/assets/mockups/worries.webp",
-		alt: "Wobbi park a worry sheet with a text box and a Park it button",
-	},
-	{
-		eyebrow: "See patterns",
-		title: "Your month, at a glance.",
-		body: "A calendar of faces and simple charts. Spot what helps without needing to be good at maths.",
-		image: "/assets/mockups/calendar.webp",
-		alt: "Wobbi calendar of daily mood faces for October",
 	},
 	{
 		eyebrow: "Journal",
@@ -105,22 +84,10 @@ export const moreInside = [
 		alt: "Wobbi daily anchors with slow breathing, walk, sunlight and water",
 	},
 	{
-		title: "Skills that only go up",
-		body: "Calming, Reframing, Worry mastery and Showing up level up with what you do and never go down.",
-		image: "/assets/mockups/progress.webp",
-		alt: "Wobbi progress screen with four skill levels",
-	},
-	{
 		title: "Sleep, from Apple Health",
 		body: "Last night and your last seven nights, next to your mood. Opt-in and read-only.",
 		image: "/assets/mockups/sleep.webp",
 		alt: "Wobbi sleep screen showing last night and a seven-night chart",
-	},
-	{
-		title: "Coins for showing up",
-		body: "Earn them from check-ins, calming and journaling. Spend them on themes or a rest day that protects your streak.",
-		image: "/assets/mockups/coins.webp",
-		alt: "Wobbi coins screen with a balance and how coins are earned",
 	},
 	{
 		title: "Focus guard",
@@ -129,22 +96,10 @@ export const moreInside = [
 		alt: "Wobbi focus guard push-up challenge with a rep counter",
 	},
 	{
-		title: "Share your win",
-		body: "Numbers only. No entries, no moods, nothing you wrote.",
-		image: "/assets/mockups/share.webp",
-		alt: "Wobbi share card reading brain rot beaten with a rep count",
-	},
-	{
 		title: "Wobbi stickers",
 		body: "Sixteen stickers for Messages, WhatsApp and anything else. Free.",
 		image: "/assets/mockups/stickers.webp",
 		alt: "Grid of sixteen Wobbi stickers",
-	},
-	{
-		title: "Reminders that respect you",
-		body: "Morning and evening breathe, a daily check-in, an anchors nudge. Skipped once you've done the thing.",
-		image: "/assets/mockups/reminders.webp",
-		alt: "Wobbi reminders for morning breathe, evening breathe, daily check-in and anchors nudge",
 	},
 ] as const;
 

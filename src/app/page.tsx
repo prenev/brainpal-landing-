@@ -11,7 +11,6 @@ import {
 import InterestForm from "@/components/InterestForm";
 import { AppStoreButton } from "@/components/ui/AppStoreButton";
 import { ContainerScroll } from "@/components/ui/ContainerScroll";
-import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards";
 import { PhoneFrame } from "@/components/ui/PhoneFrame";
 import { Reveal } from "@/components/ui/Reveal";
 import { StickyScroll } from "@/components/ui/StickyScroll";
@@ -303,28 +302,40 @@ export default function HomePage() {
 
 			{/* Privacy */}
 			<section id="privacy" className="scroll-mt-16 bg-paper py-24 md:py-36">
-				<div className="mx-auto max-w-5xl px-6 text-center">
-					<Reveal>
-						<p className="mb-4 flex items-center justify-center gap-2 text-lg font-bold text-mint">
+				<div className="mx-auto max-w-5xl px-6">
+					<Reveal className="text-center">
+						<p className="mb-4 flex items-center justify-center gap-2 text-lg font-bold text-[#1fa65a]">
 							<FiLock aria-hidden="true" /> Privacy
 						</p>
-						<h2 className="text-4xl font-extrabold tracking-tight text-white md:text-6xl">
+						<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 							What's on your phone,
 							<br />
-							<span className={accent}>stays on your phone.</span>
+							stays on your phone.
 						</h2>
-						<p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-[#a1a1a6]">
+						<p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-[#6e6e73]">
 							Everything is stored on your device by default. An account only
 							adds sync. Sleep data is read only if you allow it, and it never
 							leaves your phone.
 						</p>
 					</Reveal>
+					<ul className="mt-16 grid gap-x-16 md:grid-cols-2">
+						{promises.map((x) => (
+							<li key={x.title} className="border-t border-black/10 py-6">
+								<p className="flex items-center gap-2 text-xl font-extrabold tracking-tight text-[#1d1d1f]">
+									<FiCheck className="text-[#1fa65a]" aria-hidden="true" />
+									{x.title}
+								</p>
+								<p className="mt-1 pl-7 text-lg leading-relaxed text-[#6e6e73]">
+									{x.body}
+								</p>
+							</li>
+						))}
+					</ul>
 				</div>
-				<InfiniteMovingCards items={promises} className="mt-16" />
 			</section>
 
 			{/* Plans */}
-			<section id="pricing" className="scroll-mt-16 bg-paper py-24 md:py-36">
+			<section id="pricing" className="scroll-mt-16 bg-white py-24 md:py-36">
 				<Reveal className="mx-auto mb-14 max-w-3xl px-6 text-center">
 					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 						Free to start.
@@ -365,7 +376,7 @@ export default function HomePage() {
 			</section>
 
 			{/* Meet Wobbi */}
-			<section id="meet-pal" className="scroll-mt-16 bg-white py-24 md:py-36">
+			<section id="meet-pal" className="scroll-mt-16 bg-paper py-24 md:py-36">
 				<Reveal className="mx-auto mb-16 max-w-3xl px-6 text-center">
 					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 						Meet Wobbi.
@@ -397,7 +408,7 @@ export default function HomePage() {
 			</section>
 
 			{/* FAQ */}
-			<section id="faq" className="scroll-mt-16 bg-paper px-6 py-24 md:py-36">
+			<section id="faq" className="scroll-mt-16 bg-white px-6 py-24 md:py-36">
 				<Reveal className="mx-auto max-w-3xl">
 					<h2 className="mb-12 text-center text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 						Questions.
