@@ -94,6 +94,46 @@ Edit the Markdown files directly — they auto-render on the page:
 
 ---
 
+## Deploy
+
+### GitHub Pages (included)
+
+This repo includes `.github/workflows/deploy-pages.yml` which deploys on every push to `main`.
+
+1. Go to **Settings → Pages**.
+2. Set **Source** to **GitHub Actions**.
+3. Push to `main` and wait for the **Deploy to GitHub Pages** workflow.
+
+The workflow builds `out/` and publishes to:
+
+- `https://<your-user-or-org>.github.io/<repository-name>/`
+
+### Custom domain: `usebrainpal.com` (Namecheap)
+
+This repo includes `public/CNAME` set to `usebrainpal.com`.
+
+In Namecheap **Advanced DNS**, set:
+
+| Type  | Host | Value                  | TTL     |
+| ----- | ---- | ---------------------- | ------- |
+| A     | @    | 185.199.108.153        | Automatic |
+| A     | @    | 185.199.109.153        | Automatic |
+| A     | @    | 185.199.110.153        | Automatic |
+| A     | @    | 185.199.111.153        | Automatic |
+| CNAME | www  | prenev.github.io       | Automatic |
+
+Then in GitHub:
+
+1. Go to **Settings → Pages**.
+2. Set **Custom domain** to `usebrainpal.com`.
+3. Enable **Enforce HTTPS** after DNS is verified.
+
+### Other static hosts
+
+Build output is generated in `out/`, so you can also deploy it to Netlify, Vercel (static), Cloudflare Pages, or any static hosting provider.
+
+---
+
 ## License
 
 MIT — see [LICENSE](LICENSE)
