@@ -70,8 +70,8 @@ export const StickyScroll = ({ steps }: { steps: StickyStep[] }) => {
 			</div>
 
 			<div className="hidden md:block">
-				<div className="sticky top-0 flex h-svh items-center justify-center">
-					<div className="relative w-[340px]">
+				<div className="sticky top-16 flex h-[calc(100svh-4rem)] items-center justify-center py-4">
+					<div className="relative h-full max-h-[760px]">
 						<AnimatePresence mode="wait">
 							<motion.div
 								key={steps[active].image}
@@ -79,8 +79,13 @@ export const StickyScroll = ({ steps }: { steps: StickyStep[] }) => {
 								animate={{ opacity: 1, scale: 1, y: 0 }}
 								exit={{ opacity: 0, scale: 0.98, y: -12 }}
 								transition={{ duration: 0.35 }}
+								className="h-full"
 							>
-								<PhoneFrame src={steps[active].image} alt={steps[active].alt} />
+								<PhoneFrame
+									fitHeight
+									src={steps[active].image}
+									alt={steps[active].alt}
+								/>
 							</motion.div>
 						</AnimatePresence>
 					</div>

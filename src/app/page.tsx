@@ -9,15 +9,15 @@ import {
 	FiWifiOff,
 } from "react-icons/fi";
 import InterestForm from "@/components/InterestForm";
+import { AppStoreButton } from "@/components/ui/AppStoreButton";
 import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
-import { Button } from "@/components/ui/Button";
 import { ContainerScroll } from "@/components/ui/ContainerScroll";
 import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards";
 import { PhoneFrame } from "@/components/ui/PhoneFrame";
 import { Reveal } from "@/components/ui/Reveal";
 import { StickyScroll } from "@/components/ui/StickyScroll";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
-import { faqs, promises, site, steps } from "@/config";
+import { faqs, promises, steps } from "@/config";
 
 const accent = "text-mint";
 
@@ -133,19 +133,17 @@ export default function HomePage() {
 							A private mood diary and calming toolkit for anxious days and
 							ordinary ones.
 						</p>
-						<div className="mt-9 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
-							<Button href={site.links.webApp} external>
-								Try it in your browser
-							</Button>
+						<div className="mt-9 flex flex-col items-center gap-4">
+							<AppStoreButton href={notifyHref} />
 							<a
 								href={notifyHref}
 								className="text-[17px] text-[#2997ff] hover:underline"
 							>
-								Get notified for the App Store ›
+								Get notified when it launches ›
 							</a>
 						</div>
 						<p className="mt-6 text-sm text-[#86868b]">
-							Free · No ads · No tracking · No account needed
+							iPhone first, Android later · Free · No ads · No tracking
 						</p>
 					</Reveal>
 				</div>
@@ -314,9 +312,10 @@ export default function HomePage() {
 							Pal is on the App Store. Free, private, and built for small steps.
 						</p>
 						<div className="mt-8">
-							<Button href={site.links.webApp} external variant="ghost">
-								Or try it in your browser now
-							</Button>
+							<AppStoreButton href="#notify" />
+							<p className="mt-3 text-sm text-[#86868b]">
+								iPhone first. Android is planned for later.
+							</p>
 						</div>
 					</Reveal>
 					<Reveal delay={0.1}>

@@ -6,11 +6,13 @@ export const PhoneFrame = ({
 	alt,
 	className,
 	priority = false,
+	fitHeight = false,
 }: {
 	src: string;
 	alt: string;
 	className?: string;
 	priority?: boolean;
+	fitHeight?: boolean;
 }) => (
 	<img
 		src={src}
@@ -20,6 +22,10 @@ export const PhoneFrame = ({
 		loading={priority ? "eager" : "lazy"}
 		fetchPriority={priority ? "high" : "auto"}
 		draggable={false}
-		className={cn("h-auto w-full select-none", className)}
+		className={cn(
+			fitHeight ? "h-full w-auto" : "h-auto w-full",
+			"select-none",
+			className,
+		)}
 	/>
 );
