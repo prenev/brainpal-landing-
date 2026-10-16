@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { site } from "@/config";
+import { joinWaitlist } from "@/lib/waitlist";
 
 const INTERESTS = [
 	"Mood diary",
@@ -29,8 +30,6 @@ const schema = z.object({
 });
 
 type FormValues = z.infer<typeof schema>;
-
-const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
 
 const field =
 	"w-full rounded-xl border border-white/15 bg-ink px-4 py-3 text-base text-white placeholder:text-white/40 focus:border-mint focus:outline-none";
@@ -63,38 +62,17 @@ const InterestForm = () => {
 			setState("sent");
 			return;
 		}
-		if (!accessKey) {
-			setErrorMsg("Sign-ups aren't switched on yet. Please check back soon.");
-			setState("error");
+		const result = await joinWaitlist(v);
+		if (result === "ok") {
+			setState("sent");
 			return;
 		}
-		try {
-			const res = await fetch("https://api.web3forms.com/submit", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					Accept: "application/json",
-				},
-				body: JSON.stringify({
-					access_key: accessKey,
-					subject: `Wobbi waitlist: ${v.email}`,
-					from_name: "Wobbi website",
-					email: v.email,
-					name: v.name || "(not given)",
-					interests: v.interests.join(", ") || "(none picked)",
-					device: v.device,
-					notes: v.notes || "(none)",
-				}),
-			});
-			const data = await res.json().catch(() => ({}));
-			if (!res.ok || data.success === false) throw new Error(data.message);
-			setState("sent");
-		} catch {
-			setErrorMsg(
-				`Something went wrong. Please try again, or email ${site.contactEmail}.`,
-			);
-			setState("error");
-		}
+		setErrorMsg(
+			result === "not-configured"
+				? "Sign-ups aren't switched on yet. Please check back soon."
+				: `Something went wrong. Please try again, or email ${site.contactEmail}.`,
+		);
+		setState("error");
 	};
 
 	if (state === "sent") {
@@ -228,8 +206,9 @@ const InterestForm = () => {
 						{...register("consent")}
 					/>
 					<span>
-						Email me when Wobbi launches. I'll only get launch news, and I can
-						ask to be removed any time.
+						Email me when Wobbi launches. I agree to my email and answers being
+						stored securely and used only for that, and I can ask to be removed
+						any time.
 					</span>
 				</label>
 				{errors.consent && (
