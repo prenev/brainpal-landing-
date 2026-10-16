@@ -2,7 +2,7 @@
 """Render flat iPhone mockups from app screenshots (Pillow only).
 
 Usage: python3 scripts/make-mockups.py <screens-dir> [out-dir]
-Input : <screens-dir>/{checkin,calm,calendar,worries,progress,journal}.webp
+Input : every <screens-dir>/*.webp
         (a full 390x844 app screen, no bezel; `npm run screens` in brain-pal)
 Output: <out-dir>/<name>.webp  (transparent, 720x1528)
 """
@@ -90,6 +90,6 @@ if __name__ == "__main__":
 	src = Path(sys.argv[1])
 	out = Path(sys.argv[2] if len(sys.argv) > 2 else "public/assets/mockups")
 	out.mkdir(parents=True, exist_ok=True)
-	for name in ("checkin", "calm", "calendar", "worries", "progress", "journal"):
-		render(src / f"{name}.webp", out / f"{name}.webp")
-		print("wrote", out / f"{name}.webp")
+	for shot in sorted(src.glob("*.webp")):
+		render(shot, out / shot.name)
+		print("wrote", out / shot.name)

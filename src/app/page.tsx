@@ -1,10 +1,11 @@
 import {
 	FiAward,
-	FiBell,
+	FiCheck,
 	FiFileText,
 	FiHeart,
 	FiLock,
-	FiTarget,
+	FiMic,
+	FiVolume2,
 	FiWifiOff,
 } from "react-icons/fi";
 import InterestForm from "@/components/InterestForm";
@@ -15,7 +16,8 @@ import { PhoneFrame } from "@/components/ui/PhoneFrame";
 import { Reveal } from "@/components/ui/Reveal";
 import { StickyScroll } from "@/components/ui/StickyScroll";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
-import { faqs, promises, site, steps } from "@/config";
+import { Controls, LiveActivity, WidgetWall } from "@/components/Widgets";
+import { faqs, moreInside, plans, promises, site, steps } from "@/config";
 
 const accent = "text-mint";
 
@@ -27,14 +29,9 @@ const heroButton =
 
 const features = [
 	{
-		icon: <FiTarget size={28} aria-hidden="true" />,
-		title: "Five daily anchors",
-		body: "Pick up to five small habits, like a walk, some sunlight or slow breathing. Some tick themselves. The limit is deliberate: this isn't a to-do list.",
-	},
-	{
-		icon: <FiBell size={28} aria-hidden="true" />,
-		title: "Reminders that respect you",
-		body: "Choose the times and days. Reminders open the right tool, and skip themselves if you've already done the thing.",
+		icon: <FiMic size={28} aria-hidden="true" />,
+		title: "Hands-free with Siri",
+		body: "Say \u201cHey Siri, I need to calm down\u201d or add it to Shortcuts. Breathing, SOS, a mood check-in or a parked worry, without opening the app first.",
 	},
 	{
 		icon: <FiHeart size={28} aria-hidden="true" />,
@@ -42,14 +39,19 @@ const features = [
 		body: "See last night's sleep next to your mood, and save breathing sessions as Mindful Minutes. It's opt-in, sleep is read-only, and it stays on your phone.",
 	},
 	{
+		icon: <FiVolume2 size={28} aria-hidden="true" />,
+		title: "Haptics and sounds",
+		body: "Soft taps and gentle sounds guide your breathing, and both switch off in one tap if you'd rather not.",
+	},
+	{
 		icon: <FiAward size={28} aria-hidden="true" />,
-		title: "Coins for showing up",
-		body: "Earn coins from check-ins, calming sessions and journal entries. Spend them on colour themes or a rest day that protects your streak. No real money, ever.",
+		title: "Rest days, not guilt",
+		body: "Missed a day? Spend coins on a rest day that protects your streak. No real money, ever.",
 	},
 	{
 		icon: <FiFileText size={28} aria-hidden="true" />,
 		title: "Plain-language recaps",
-		body: "A short summary of your day, week or month, written on your phone from your own entries. No AI needed.",
+		body: "A short summary of your day, written on your phone from your own entries. No AI needed.",
 	},
 	{
 		icon: <FiWifiOff size={28} aria-hidden="true" />,
@@ -62,7 +64,7 @@ const poses = [
 	{ src: "/assets/pal/wave.png", name: "Waving hello", delay: "0s" },
 	{ src: "/assets/pal/think.png", name: "Thinking it through", delay: "0.8s" },
 	{ src: "/assets/pal/celebrate.png", name: "Celebrating you", delay: "1.6s" },
-	{ src: "/assets/pal/sleep.png", name: "Resting with you", delay: "2.4s" },
+	{ src: "/assets/pal/sleepy.png", name: "Resting with you", delay: "2.4s" },
 ];
 
 const jsonLd = {
@@ -95,6 +97,17 @@ const jsonLd = {
 			image: `${site.url}${site.ogImage.url}`,
 			url: site.url,
 			offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+			featureList: [
+				"One-tap mood check-ins",
+				"Thought records",
+				"Guided breathing and SOS",
+				"Worry time",
+				"Home Screen and Lock Screen widgets",
+				"Live Activity and Control Center controls",
+				"Siri and Shortcuts",
+				"Focus guard",
+				"Sleep insights from Apple Health",
+			],
 			publisher: { "@id": `${site.url}/#organization` },
 		},
 		{
@@ -149,7 +162,7 @@ export default function HomePage() {
 							</a>
 						</div>
 						<p className="mt-6 text-sm text-[#86868b]">
-							iPhone first, Android later · Free · No ads · No tracking
+							iPhone first, Android later · Free to start · No ads · No tracking
 						</p>
 					</Reveal>
 				</div>
@@ -189,8 +202,81 @@ export default function HomePage() {
 				<StickyScroll steps={[...steps]} />
 			</section>
 
+			{/* More inside */}
+			<section id="more" className="scroll-mt-16 bg-paper py-24 md:py-36">
+				<Reveal className="mx-auto mb-14 max-w-3xl px-6 text-center">
+					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
+						And a lot more
+						<br />
+						inside.
+					</h2>
+				</Reveal>
+				<ul className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-14 px-6 md:grid-cols-4">
+					{moreInside.map((m, i) => (
+						<li key={m.title}>
+							<Reveal delay={(i % 4) * 0.07}>
+								<PhoneFrame src={m.image} alt={m.alt} />
+								<h3 className="mt-5 text-lg font-extrabold tracking-tight text-[#1d1d1f]">
+									{m.title}
+								</h3>
+								<p className="mt-1 text-[15px] leading-relaxed text-[#6e6e73]">
+									{m.body}
+								</p>
+							</Reveal>
+						</li>
+					))}
+				</ul>
+			</section>
+
+			{/* Widgets */}
+			<section id="widgets" className="scroll-mt-16 bg-ink py-24 md:py-36">
+				<Reveal className="mx-auto mb-14 max-w-3xl px-6 text-center">
+					<h2 className="text-4xl font-extrabold tracking-tight text-white md:text-6xl">
+						On your Home Screen,
+						<br />
+						<span className={accent}>before you even open it.</span>
+					</h2>
+					<p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-[#a1a1a6]">
+						Fourteen widgets, four of them for the Lock Screen. Tap a mood face
+						or tick an anchor right from the widget; Wobbi applies it next time
+						you open the app. Widgets show numbers, never what you wrote.
+					</p>
+				</Reveal>
+				<Reveal>
+					<WidgetWall />
+				</Reveal>
+				<div className="mx-auto mt-24 grid max-w-5xl items-center gap-14 px-6 md:grid-cols-2">
+					<Reveal>
+						<h3 className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+							Breathe from the Lock Screen.
+						</h3>
+						<p className="mt-4 text-lg leading-relaxed text-[#a1a1a6]">
+							Start a breathing or focus session and follow it on the Lock
+							Screen and in the Dynamic Island, without keeping the app open.
+						</p>
+						<h3 className="mt-12 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+							One swipe to calm.
+						</h3>
+						<p className="mt-4 text-lg leading-relaxed text-[#a1a1a6]">
+							Four Control Center buttons (iOS 18): SOS, Breathe, Park a worry
+							and Focus guard.
+						</p>
+						<div className="mt-6">
+							<Controls />
+						</div>
+					</Reveal>
+					<Reveal delay={0.1}>
+						<LiveActivity />
+					</Reveal>
+				</div>
+				<p className="mx-auto mt-16 max-w-xl px-6 text-center text-sm text-[#86868b]">
+					Illustrations of the widgets with sample data. Widgets need iOS 17 and
+					Control Center buttons need iOS 18.
+				</p>
+			</section>
+
 			{/* Features */}
-			<section id="features" className="scroll-mt-16 bg-paper py-24 md:py-36">
+			<section id="features" className="scroll-mt-16 bg-white py-24 md:py-36">
 				<Reveal className="mx-auto mb-14 max-w-3xl px-6 text-center">
 					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 						Small things that
@@ -216,7 +302,7 @@ export default function HomePage() {
 			</section>
 
 			{/* Privacy */}
-			<section id="privacy" className="scroll-mt-16 bg-ink py-24 md:py-36">
+			<section id="privacy" className="scroll-mt-16 bg-paper py-24 md:py-36">
 				<div className="mx-auto max-w-5xl px-6 text-center">
 					<Reveal>
 						<p className="mb-4 flex items-center justify-center gap-2 text-lg font-bold text-mint">
@@ -237,8 +323,49 @@ export default function HomePage() {
 				<InfiniteMovingCards items={promises} className="mt-16" />
 			</section>
 
+			{/* Plans */}
+			<section id="pricing" className="scroll-mt-16 bg-paper py-24 md:py-36">
+				<Reveal className="mx-auto mb-14 max-w-3xl px-6 text-center">
+					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
+						Free to start.
+						<br />
+						<span className="text-[#1fa65a]">Pro is optional.</span>
+					</h2>
+					<p className="mx-auto mt-6 max-w-xl text-xl leading-relaxed text-[#6e6e73]">
+						Everything that helps you calm down is free. Pro only adds two
+						extras.
+					</p>
+				</Reveal>
+				<div className="mx-auto grid max-w-4xl gap-12 px-6 md:grid-cols-2">
+					{[
+						{ name: "Free", list: plans.free },
+						{ name: "Wobbi Pro", list: plans.pro },
+					].map((p) => (
+						<Reveal key={p.name}>
+							<h3 className="mb-5 text-2xl font-extrabold text-[#1d1d1f]">
+								{p.name}
+							</h3>
+							<ul className="space-y-3">
+								{p.list.map((item) => (
+									<li
+										key={item}
+										className="flex gap-3 text-[17px] leading-snug text-[#6e6e73]"
+									>
+										<FiCheck
+											className="mt-1 shrink-0 text-[#1fa65a]"
+											aria-hidden="true"
+										/>
+										{item}
+									</li>
+								))}
+							</ul>
+						</Reveal>
+					))}
+				</div>
+			</section>
+
 			{/* Meet Wobbi */}
-			<section id="meet-pal" className="scroll-mt-16 bg-paper py-24 md:py-36">
+			<section id="meet-pal" className="scroll-mt-16 bg-white py-24 md:py-36">
 				<Reveal className="mx-auto mb-16 max-w-3xl px-6 text-center">
 					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 						Meet Wobbi.
@@ -252,7 +379,7 @@ export default function HomePage() {
 				<div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-6 md:grid-cols-4">
 					{poses.map((p, i) => (
 						<Reveal key={p.name} delay={i * 0.08}>
-							<div className="flex flex-col items-center rounded-[28px] bg-white px-4 pb-6 pt-8">
+							<div className="flex flex-col items-center px-4 pb-6 pt-4">
 								<img
 									src={p.src}
 									alt={p.name}
@@ -270,7 +397,7 @@ export default function HomePage() {
 			</section>
 
 			{/* FAQ */}
-			<section id="faq" className="scroll-mt-16 bg-white px-6 py-24 md:py-36">
+			<section id="faq" className="scroll-mt-16 bg-paper px-6 py-24 md:py-36">
 				<Reveal className="mx-auto max-w-3xl">
 					<h2 className="mb-12 text-center text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 						Questions.
