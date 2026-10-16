@@ -3,6 +3,7 @@ import BackToTop from "@/components/BackToTop";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import { site } from "@/config";
+import "@fontsource-variable/nunito";
 import "./globals.css";
 
 export const metadata: Metadata = {

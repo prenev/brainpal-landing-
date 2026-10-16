@@ -55,7 +55,7 @@ export const StickyScroll = ({ steps }: { steps: StickyStep[] }) => {
 							<p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-mint">
 								{s.eyebrow}
 							</p>
-							<h3 className="mb-4 text-4xl font-semibold leading-[1.08] tracking-tight text-white md:text-5xl">
+							<h3 className="mb-4 text-4xl font-extrabold leading-[1.08] tracking-tight text-white md:text-5xl">
 								{s.title}
 							</h3>
 							<p className="max-w-md text-lg leading-relaxed text-[#a1a1a6] md:text-xl">

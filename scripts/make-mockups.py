@@ -3,8 +3,8 @@
 
 Usage: python3 scripts/make-mockups.py <screens-dir> [out-dir]
 Input : <screens-dir>/{checkin,calm,calendar,worries,progress,journal}.webp
-        (just the app screen, no bezel)
-Output: <out-dir>/<name>.webp  (transparent, 720x1460)
+        (a full 390x844 app screen, no bezel; `npm run screens` in brain-pal)
+Output: <out-dir>/<name>.webp  (transparent, 720x1528)
 """
 import sys
 from pathlib import Path
@@ -12,8 +12,8 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 S = 4  # supersample
-W, H = 720, 1460
-PX, PY, PW, PH = 20, 20, 680, 1420  # phone body
+W, H = 720, 1528
+PX, PY, PW, PH = 20, 20, 680, 1488  # phone body
 RIM, BEZEL = 6, 12
 RIM_COLOR = (44, 46, 51, 255)
 SCREEN_BG = (11, 22, 39, 255)

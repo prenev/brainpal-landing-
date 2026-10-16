@@ -73,7 +73,7 @@ const bento: {
 		header: (
 			<p
 				aria-hidden="true"
-				className={`absolute right-8 top-2 hidden text-[9rem] font-semibold leading-none tracking-tighter md:block ${accent}`}
+				className={`absolute right-8 top-2 hidden text-[9rem] font-extrabold leading-none tracking-tighter md:block ${accent}`}
 			>
 				+5
 			</p>
@@ -115,14 +115,18 @@ export default function HomePage() {
 			{/* Hero */}
 			<section className="relative overflow-hidden bg-ink pt-36 text-center md:pt-44">
 				<div className="relative z-10 mx-auto max-w-5xl px-6">
-					<p className="mb-5 text-lg font-semibold text-[#34d17a] md:text-xl">
-						Brain Pal
-					</p>
+					<img
+						src="/icon-512.png"
+						alt="Brain Pal"
+						width={96}
+						height={96}
+						className="mx-auto mb-8 h-24 w-24 rounded-[26px]"
+					/>
 					<TextGenerateEffect
 						words="Check in. Breathe. Take one small step."
 						highlight={["Breathe"]}
 						highlightClassName={accent}
-						className="text-[2.75rem] font-semibold leading-[1.04] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+						className="text-[2.75rem] font-extrabold leading-[1.04] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]"
 					/>
 					<Reveal delay={0.9}>
 						<p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-[#a1a1a6] md:text-2xl">
@@ -158,7 +162,7 @@ export default function HomePage() {
 			{/* Statement */}
 			<section className="bg-paper px-6 py-28 md:py-44">
 				<Reveal className="mx-auto max-w-4xl">
-					<p className="text-3xl font-semibold leading-[1.15] tracking-tight text-[#86868b] md:text-5xl">
+					<p className="text-3xl font-bold leading-[1.15] tracking-tight text-[#86868b] md:text-5xl">
 						Some days are heavy.{" "}
 						<span className="text-[#1d1d1f]">
 							Brain Pal gives you one tap to say so, one minute to settle, and
@@ -172,7 +176,7 @@ export default function HomePage() {
 			{/* Walkthrough */}
 			<section id="how-it-works" className="scroll-mt-16 bg-ink py-24 md:py-32">
 				<Reveal className="mx-auto mb-6 max-w-3xl px-6 text-center">
-					<h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
+					<h2 className="text-4xl font-extrabold tracking-tight text-white md:text-6xl">
 						One gentle step
 						<br />
 						<span className={accent}>at a time.</span>
@@ -184,7 +188,7 @@ export default function HomePage() {
 			{/* Bento */}
 			<section id="features" className="scroll-mt-16 bg-paper py-24 md:py-36">
 				<Reveal className="mx-auto mb-14 max-w-3xl px-6 text-center">
-					<h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] md:text-6xl">
+					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 						Small things that
 						<br />
 						help every day.
@@ -201,10 +205,10 @@ export default function HomePage() {
 			<section id="privacy" className="scroll-mt-16 bg-ink py-24 md:py-36">
 				<div className="mx-auto max-w-5xl px-6 text-center">
 					<Reveal>
-						<p className="mb-4 flex items-center justify-center gap-2 text-lg font-semibold text-[#34d17a]">
+						<p className="mb-4 flex items-center justify-center gap-2 text-lg font-bold text-mint">
 							<FiLock aria-hidden="true" /> Privacy
 						</p>
-						<h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
+						<h2 className="text-4xl font-extrabold tracking-tight text-white md:text-6xl">
 							What's on your phone,
 							<br />
 							<span className={accent}>stays on your phone.</span>
@@ -220,7 +224,7 @@ export default function HomePage() {
 							<Reveal key={s.label} delay={i * 0.08}>
 								<div className="flex h-full flex-col items-center justify-center rounded-3xl bg-ink-2 px-4 py-10">
 									<p
-										className={`text-6xl font-semibold tracking-tighter md:text-7xl ${accent}`}
+										className={`text-6xl font-extrabold tracking-tighter md:text-7xl ${accent}`}
 									>
 										{s.big}
 									</p>
@@ -236,7 +240,7 @@ export default function HomePage() {
 			{/* Meet Pal */}
 			<section id="meet-pal" className="scroll-mt-16 bg-paper py-24 md:py-36">
 				<Reveal className="mx-auto mb-16 max-w-3xl px-6 text-center">
-					<h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] md:text-6xl">
+					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 						Meet Pal.
 					</h2>
 					<p className="mx-auto mt-5 max-w-xl text-xl leading-relaxed text-[#6e6e73]">
@@ -268,13 +272,13 @@ export default function HomePage() {
 			{/* FAQ */}
 			<section id="faq" className="scroll-mt-16 bg-white px-6 py-24 md:py-36">
 				<Reveal className="mx-auto max-w-3xl">
-					<h2 className="mb-12 text-center text-4xl font-semibold tracking-tight text-[#1d1d1f] md:text-6xl">
+					<h2 className="mb-12 text-center text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 						Questions.
 					</h2>
 					<div className="divide-y divide-black/10 border-y border-black/10">
 						{faqs.map((f) => (
 							<details key={f.question} className="group py-5">
-								<summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-xl font-semibold tracking-tight text-[#1d1d1f] [&::-webkit-details-marker]:hidden">
+								<summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-xl font-extrabold tracking-tight text-[#1d1d1f] [&::-webkit-details-marker]:hidden">
 									{f.question}
 									<span
 										aria-hidden="true"
@@ -301,7 +305,7 @@ export default function HomePage() {
 							alt=""
 							className="mb-6 h-28 w-28 animate-float object-contain"
 						/>
-						<h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
+						<h2 className="text-4xl font-extrabold tracking-tight text-white md:text-6xl">
 							Be a little kinder to your mind,{" "}
 							<span className={accent}>today.</span>
 						</h2>
