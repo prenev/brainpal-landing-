@@ -102,7 +102,7 @@ The "Join the waitlist" form on the home page (`src/components/InterestForm`) us
 
 1. Create a free access key at web3forms.com (enter the email that should get the sign-ups).
 2. If your Web3Forms plan allows it, restrict the key to `usebrainpal.com` in its dashboard.
-3. In GitHub: **Settings → Secrets and variables → Actions → Variables → New repository variable**,
+3. (Optional override; the deploy workflow already has a default key.) In GitHub: **Settings → Secrets and variables → Actions → Variables → New repository variable**,
    name `WEB3FORMS_KEY`, value = your access key. (It is a public key by design, so a variable is fine.)
 4. Re-run **Deploy to GitHub Pages**. Without the variable the form shows "Sign-ups aren't switched on yet".
 

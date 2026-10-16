@@ -49,7 +49,8 @@ jobs:
       - name: Build static site
         run: pnpm build
         env:
-          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY }}
+          # Web3Forms access keys are public by design (they ship in the page JS).
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY || '84bc8afe-a603-4969-b844-284ecb7af8a8' }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
