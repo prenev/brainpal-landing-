@@ -7,6 +7,7 @@ import { parseMarkdown } from "@/components/Markdown/parseMarkdown";
 
 export const metadata: Metadata = {
 	title: "Privacy Policy",
+	robots: { index: false, follow: false },
 	description:
 		"Learn how we collect, use, and protect your personal information.",
 };

@@ -17,13 +17,15 @@ import { PhoneFrame } from "@/components/ui/PhoneFrame";
 import { Reveal } from "@/components/ui/Reveal";
 import { StickyScroll } from "@/components/ui/StickyScroll";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
-import { faqs, promises, steps } from "@/config";
+import { faqs, promises, site, steps } from "@/config";
 
 const accent = "text-mint";
 
 const notifyHref = "#notify";
 const waitlistButton =
 	"inline-flex h-[68px] items-center justify-center rounded-2xl bg-mint px-8 text-xl font-extrabold tracking-tight text-ink transition-opacity hover:opacity-85";
+const heroButton =
+	"inline-flex h-12 items-center justify-center rounded-full px-6 text-base font-bold transition-opacity hover:opacity-85";
 
 const Chip = ({ children }: { children: ReactNode }) => (
 	<span className="rounded-full bg-paper px-3 py-1.5 text-[13px] font-medium text-[#1d1d1f]">
@@ -111,9 +113,57 @@ const poses = [
 	{ src: "/assets/pal/sleep.png", name: "Resting with you", delay: "2.4s" },
 ];
 
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Organization",
+			"@id": `${site.url}/#organization`,
+			name: site.companyName,
+			url: site.url,
+			logo: `${site.url}/icon-512.png`,
+			email: site.contactEmail,
+		},
+		{
+			"@type": "WebSite",
+			"@id": `${site.url}/#website`,
+			url: site.url,
+			name: site.name,
+			description: site.description,
+			inLanguage: "en",
+			publisher: { "@id": `${site.url}/#organization` },
+		},
+		{
+			"@type": "MobileApplication",
+			"@id": `${site.url}/#app`,
+			name: site.name,
+			description: site.description,
+			operatingSystem: "iOS",
+			applicationCategory: "HealthApplication",
+			image: `${site.url}${site.ogImage.url}`,
+			url: site.url,
+			offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+			publisher: { "@id": `${site.url}/#organization` },
+		},
+		{
+			"@type": "FAQPage",
+			"@id": `${site.url}/#faq`,
+			mainEntity: faqs.map((f) => ({
+				"@type": "Question",
+				name: f.question,
+				acceptedAnswer: { "@type": "Answer", text: f.answer },
+			})),
+		},
+	],
+};
+
 export default function HomePage() {
 	return (
 		<main className="-mt-16">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+			/>
 			{/* Hero */}
 			<section className="relative overflow-hidden bg-ink pt-36 text-center md:pt-44">
 				<div className="relative z-10 mx-auto max-w-5xl px-6">
@@ -135,9 +185,15 @@ export default function HomePage() {
 							A private mood diary and calming toolkit for anxious days and
 							ordinary ones.
 						</p>
-						<div className="mt-9 flex justify-center">
-							<a href={notifyHref} className={waitlistButton}>
+						<div className="mt-9 flex items-center justify-center gap-3">
+							<a href={notifyHref} className={`${heroButton} bg-mint text-ink`}>
 								Join the waitlist
+							</a>
+							<a
+								href="#faq"
+								className={`${heroButton} border border-white/25 text-white`}
+							>
+								See FAQs
 							</a>
 						</div>
 						<p className="mt-6 text-sm text-[#86868b]">

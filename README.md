@@ -121,6 +121,24 @@ status bar and home indicator around each one.
 
 ---
 
+## SEO and social sharing
+
+Everything is generated at build time from `src/config.ts` (`site.title`, `site.description`, `site.ogImage`, FAQs):
+
+- title, description, canonical URL, robots, Open Graph and Twitter card tags (`src/app/layout.tsx`)
+- JSON-LD structured data: Organization, WebSite, MobileApplication and FAQPage (`src/app/page.tsx`)
+- `sitemap.xml` and `robots.txt` (`src/app/sitemap.ts`, `src/app/robots.ts`)
+- 1200x630 share image `public/og.png`, favicons and a web manifest
+
+After the first deploy, tell search engines about the site:
+
+1. Google Search Console: add `usebrainpal.com` as a property, then submit `https://usebrainpal.com/sitemap.xml`.
+   For the HTML-tag method, set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` (and `NEXT_PUBLIC_BING_SITE_VERIFICATION`
+   for Bing Webmaster Tools) as repo variables and pass them to the build step.
+2. Check link previews with the Facebook Sharing Debugger and the LinkedIn Post Inspector (X and iMessage read the same tags).
+
+---
+
 ## Deploy
 
 ### GitHub Pages (included)

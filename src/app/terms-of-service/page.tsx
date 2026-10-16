@@ -6,6 +6,7 @@ import MarkdownLayout from "@/components/Markdown";
 import { parseMarkdown } from "@/components/Markdown/parseMarkdown";
 
 export const metadata: Metadata = {
+	robots: { index: false, follow: false },
 	title: "Terms of Service",
 	description: "Read our terms and conditions for using this application.",
 };
