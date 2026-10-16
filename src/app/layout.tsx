@@ -3,6 +3,7 @@ import BackToTop from "@/components/BackToTop";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import { site } from "@/config";
+import "@fontsource-variable/nunito";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -40,8 +41,8 @@ export const viewport: Viewport = {
 	width: "device-width",
 	initialScale: 1,
 	themeColor: [
-		{ media: "(prefers-color-scheme: light)", color: "#000000" },
-		{ media: "(prefers-color-scheme: dark)", color: "#000000" },
+		{ media: "(prefers-color-scheme: light)", color: "#101b34" },
+		{ media: "(prefers-color-scheme: dark)", color: "#101b34" },
 	],
 };
 

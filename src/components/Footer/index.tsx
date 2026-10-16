@@ -6,7 +6,7 @@ const linkClass =
 	"text-xs text-[#6e6e73] transition-colors hover:text-[#1d1d1f] hover:underline dark:text-[#86868b] dark:hover:text-white";
 
 const Footer = ({ name }: FooterProps) => (
-	<footer className="bg-[#f5f5f7] px-6 py-10 dark:bg-[#161617]">
+	<footer className="bg-paper px-6 py-10 dark:bg-ink">
 		<div className="mx-auto max-w-6xl">
 			<p className="mb-6 border-b border-black/10 pb-6 text-xs leading-relaxed text-[#6e6e73] dark:border-white/10 dark:text-[#86868b]">
 				{name} is a self-help tool. It does not diagnose or treat any condition.

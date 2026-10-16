@@ -10,12 +10,7 @@ export const InfiniteMovingCards = ({
 	className?: string;
 	reverse?: boolean;
 }) => (
-	<div
-		className={cn(
-			"group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]",
-			className,
-		)}
-	>
+	<div className={cn("group relative overflow-hidden", className)}>
 		<ul
 			className={cn(
 				"flex w-max gap-4 py-2 animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none",

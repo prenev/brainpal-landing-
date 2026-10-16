@@ -52,10 +52,10 @@ export const StickyScroll = ({ steps }: { steps: StickyStep[] }) => {
 							animate={{ opacity: active === i ? 1 : 0.28 }}
 							transition={{ duration: 0.4 }}
 						>
-							<p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#34d17a]">
+							<p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-mint">
 								{s.eyebrow}
 							</p>
-							<h3 className="mb-4 text-4xl font-semibold leading-[1.08] tracking-tight text-white md:text-5xl">
+							<h3 className="mb-4 text-4xl font-extrabold leading-[1.08] tracking-tight text-white md:text-5xl">
 								{s.title}
 							</h3>
 							<p className="max-w-md text-lg leading-relaxed text-[#a1a1a6] md:text-xl">
@@ -71,7 +71,7 @@ export const StickyScroll = ({ steps }: { steps: StickyStep[] }) => {
 
 			<div className="hidden md:block">
 				<div className="sticky top-0 flex h-svh items-center justify-center">
-					<div className="relative w-[320px]">
+					<div className="relative w-[340px]">
 						<AnimatePresence mode="wait">
 							<motion.div
 								key={steps[active].image}

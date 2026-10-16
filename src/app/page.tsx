@@ -8,25 +8,23 @@ import {
 	FiTarget,
 	FiWifiOff,
 } from "react-icons/fi";
+import InterestForm from "@/components/InterestForm";
 import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
+import { Button } from "@/components/ui/Button";
 import { ContainerScroll } from "@/components/ui/ContainerScroll";
 import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards";
-import { MovingBorderButton } from "@/components/ui/MovingBorderButton";
 import { PhoneFrame } from "@/components/ui/PhoneFrame";
 import { Reveal } from "@/components/ui/Reveal";
-import { Spotlight } from "@/components/ui/Spotlight";
 import { StickyScroll } from "@/components/ui/StickyScroll";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import { faqs, promises, site, steps } from "@/config";
 
-const gradientText =
-	"bg-gradient-to-r from-[#7ff0b3] via-[#5fe0d0] to-[#7bc4ff] bg-clip-text text-transparent";
+const accent = "text-mint";
 
-const notifyHref =
-	"mailto:hello@brainpal.app?subject=Notify%20me%20when%20Brain%20Pal%20launches";
+const notifyHref = "#notify";
 
 const Chip = ({ children }: { children: ReactNode }) => (
-	<span className="rounded-full bg-[#f5f5f7] px-3 py-1.5 text-[13px] font-medium text-[#1d1d1f]">
+	<span className="rounded-full bg-paper px-3 py-1.5 text-[13px] font-medium text-[#1d1d1f]">
 		{children}
 	</span>
 );
@@ -75,7 +73,7 @@ const bento: {
 		header: (
 			<p
 				aria-hidden="true"
-				className={`absolute right-8 top-2 hidden text-[9rem] font-semibold leading-none tracking-tighter md:block ${gradientText}`}
+				className={`absolute right-8 top-2 hidden text-[9rem] font-extrabold leading-none tracking-tighter md:block ${accent}`}
 			>
 				+5
 			</p>
@@ -113,19 +111,22 @@ const poses = [
 
 export default function HomePage() {
 	return (
-		<main className="-mt-12">
+		<main className="-mt-16">
 			{/* Hero */}
-			<section className="relative overflow-hidden bg-black pt-32 text-center md:pt-40">
-				<Spotlight className="-top-40 left-0 md:-top-20 md:left-60" />
+			<section className="relative overflow-hidden bg-ink pt-36 text-center md:pt-44">
 				<div className="relative z-10 mx-auto max-w-5xl px-6">
-					<p className="mb-5 text-lg font-semibold text-[#34d17a] md:text-xl">
-						Brain Pal
-					</p>
+					<img
+						src="/icon-512.png"
+						alt="Brain Pal"
+						width={96}
+						height={96}
+						className="mx-auto mb-8 h-24 w-24 rounded-[26px]"
+					/>
 					<TextGenerateEffect
 						words="Check in. Breathe. Take one small step."
 						highlight={["Breathe"]}
-						highlightClassName={gradientText}
-						className="text-[2.75rem] font-semibold leading-[1.04] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+						highlightClassName={accent}
+						className="text-[2.75rem] font-extrabold leading-[1.04] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]"
 					/>
 					<Reveal delay={0.9}>
 						<p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-[#a1a1a6] md:text-2xl">
@@ -133,9 +134,9 @@ export default function HomePage() {
 							ordinary ones.
 						</p>
 						<div className="mt-9 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
-							<MovingBorderButton href={site.links.webApp} external>
+							<Button href={site.links.webApp} external>
 								Try it in your browser
-							</MovingBorderButton>
+							</Button>
 							<a
 								href={notifyHref}
 								className="text-[17px] text-[#2997ff] hover:underline"
@@ -151,7 +152,7 @@ export default function HomePage() {
 
 				<ContainerScroll>
 					<PhoneFrame
-						src="/assets/screens/checkin.webp"
+						src="/assets/mockups/checkin.webp"
 						alt="Brain Pal home screen"
 						priority
 					/>
@@ -159,9 +160,9 @@ export default function HomePage() {
 			</section>
 
 			{/* Statement */}
-			<section className="bg-[#f5f5f7] px-6 py-28 md:py-44">
+			<section className="bg-paper px-6 py-28 md:py-44">
 				<Reveal className="mx-auto max-w-4xl">
-					<p className="text-3xl font-semibold leading-[1.15] tracking-tight text-[#86868b] md:text-5xl">
+					<p className="text-3xl font-bold leading-[1.15] tracking-tight text-[#86868b] md:text-5xl">
 						Some days are heavy.{" "}
 						<span className="text-[#1d1d1f]">
 							Brain Pal gives you one tap to say so, one minute to settle, and
@@ -173,27 +174,21 @@ export default function HomePage() {
 			</section>
 
 			{/* Walkthrough */}
-			<section
-				id="how-it-works"
-				className="scroll-mt-12 bg-black py-24 md:py-32"
-			>
+			<section id="how-it-works" className="scroll-mt-16 bg-ink py-24 md:py-32">
 				<Reveal className="mx-auto mb-6 max-w-3xl px-6 text-center">
-					<h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
+					<h2 className="text-4xl font-extrabold tracking-tight text-white md:text-6xl">
 						One gentle step
 						<br />
-						<span className={gradientText}>at a time.</span>
+						<span className={accent}>at a time.</span>
 					</h2>
 				</Reveal>
 				<StickyScroll steps={[...steps]} />
 			</section>
 
 			{/* Bento */}
-			<section
-				id="features"
-				className="scroll-mt-12 bg-[#f5f5f7] py-24 md:py-36"
-			>
+			<section id="features" className="scroll-mt-16 bg-paper py-24 md:py-36">
 				<Reveal className="mx-auto mb-14 max-w-3xl px-6 text-center">
-					<h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] md:text-6xl">
+					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 						Small things that
 						<br />
 						help every day.
@@ -207,16 +202,16 @@ export default function HomePage() {
 			</section>
 
 			{/* Privacy */}
-			<section id="privacy" className="scroll-mt-12 bg-black py-24 md:py-36">
+			<section id="privacy" className="scroll-mt-16 bg-ink py-24 md:py-36">
 				<div className="mx-auto max-w-5xl px-6 text-center">
 					<Reveal>
-						<p className="mb-4 flex items-center justify-center gap-2 text-lg font-semibold text-[#34d17a]">
+						<p className="mb-4 flex items-center justify-center gap-2 text-lg font-bold text-mint">
 							<FiLock aria-hidden="true" /> Privacy
 						</p>
-						<h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
+						<h2 className="text-4xl font-extrabold tracking-tight text-white md:text-6xl">
 							What's on your phone,
 							<br />
-							<span className={gradientText}>stays on your phone.</span>
+							<span className={accent}>stays on your phone.</span>
 						</h2>
 						<p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-[#a1a1a6]">
 							Everything is stored on your device by default. An account only
@@ -227,9 +222,9 @@ export default function HomePage() {
 					<div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4">
 						{stats.map((s, i) => (
 							<Reveal key={s.label} delay={i * 0.08}>
-								<div className="flex h-full flex-col items-center justify-center rounded-3xl bg-[#1d1d1f] px-4 py-10">
+								<div className="flex h-full flex-col items-center justify-center rounded-3xl bg-ink-2 px-4 py-10">
 									<p
-										className={`text-6xl font-semibold tracking-tighter md:text-7xl ${gradientText}`}
+										className={`text-6xl font-extrabold tracking-tighter md:text-7xl ${accent}`}
 									>
 										{s.big}
 									</p>
@@ -243,12 +238,9 @@ export default function HomePage() {
 			</section>
 
 			{/* Meet Pal */}
-			<section
-				id="meet-pal"
-				className="scroll-mt-12 bg-[#f5f5f7] py-24 md:py-36"
-			>
+			<section id="meet-pal" className="scroll-mt-16 bg-paper py-24 md:py-36">
 				<Reveal className="mx-auto mb-16 max-w-3xl px-6 text-center">
-					<h2 className="text-4xl font-semibold tracking-tight text-[#1d1d1f] md:text-6xl">
+					<h2 className="text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 						Meet Pal.
 					</h2>
 					<p className="mx-auto mt-5 max-w-xl text-xl leading-relaxed text-[#6e6e73]">
@@ -278,15 +270,15 @@ export default function HomePage() {
 			</section>
 
 			{/* FAQ */}
-			<section id="faq" className="scroll-mt-12 bg-white px-6 py-24 md:py-36">
+			<section id="faq" className="scroll-mt-16 bg-white px-6 py-24 md:py-36">
 				<Reveal className="mx-auto max-w-3xl">
-					<h2 className="mb-12 text-center text-4xl font-semibold tracking-tight text-[#1d1d1f] md:text-6xl">
+					<h2 className="mb-12 text-center text-4xl font-extrabold tracking-tight text-[#1d1d1f] md:text-6xl">
 						Questions.
 					</h2>
 					<div className="divide-y divide-black/10 border-y border-black/10">
 						{faqs.map((f) => (
 							<details key={f.question} className="group py-5">
-								<summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-xl font-semibold tracking-tight text-[#1d1d1f] [&::-webkit-details-marker]:hidden">
+								<summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-xl font-extrabold tracking-tight text-[#1d1d1f] [&::-webkit-details-marker]:hidden">
 									{f.question}
 									<span
 										aria-hidden="true"
@@ -304,38 +296,33 @@ export default function HomePage() {
 				</Reveal>
 			</section>
 
-			{/* Final CTA */}
-			<section
-				id="get-the-app"
-				className="relative scroll-mt-12 overflow-hidden bg-black px-6 py-28 text-center md:py-40"
-			>
-				<Spotlight className="-top-40 left-0 md:left-60" fill="#34d17a" />
-				<Reveal className="relative z-10 mx-auto max-w-3xl">
-					<img
-						src="/assets/pal/love.png"
-						alt=""
-						className="mx-auto mb-6 h-28 w-28 animate-float object-contain"
-					/>
-					<h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
-						Be a little kinder
-						<br />
-						to your mind, <span className={gradientText}>today.</span>
-					</h2>
-					<p className="mx-auto mt-6 max-w-xl text-xl text-[#a1a1a6]">
-						Free, private, and built for small steps that add up.
-					</p>
-					<div className="mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
-						<MovingBorderButton href={site.links.webApp} external>
-							Try it in your browser
-						</MovingBorderButton>
-						<a
-							href={notifyHref}
-							className="text-[17px] text-[#2997ff] hover:underline"
-						>
-							Get notified for the App Store ›
-						</a>
-					</div>
-				</Reveal>
+			{/* Interest form */}
+			<section id="notify" className="scroll-mt-16 bg-ink px-6 py-24 md:py-36">
+				<div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2 md:gap-16">
+					<Reveal>
+						<img
+							src="/assets/pal/love.png"
+							alt=""
+							className="mb-6 h-28 w-28 animate-float object-contain"
+						/>
+						<h2 className="text-4xl font-extrabold tracking-tight text-white md:text-6xl">
+							Be a little kinder to your mind,{" "}
+							<span className={accent}>today.</span>
+						</h2>
+						<p className="mt-6 max-w-md text-xl leading-relaxed text-[#a1a1a6]">
+							Tell us what would help most and we'll email you the moment Brain
+							Pal is on the App Store. Free, private, and built for small steps.
+						</p>
+						<div className="mt-8">
+							<Button href={site.links.webApp} external variant="ghost">
+								Or try it in your browser now
+							</Button>
+						</div>
+					</Reveal>
+					<Reveal delay={0.1}>
+						<InterestForm />
+					</Reveal>
+				</div>
 			</section>
 		</main>
 	);

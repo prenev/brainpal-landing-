@@ -48,6 +48,8 @@ jobs:
 
       - name: Build static site
         run: pnpm build
+        env:
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4

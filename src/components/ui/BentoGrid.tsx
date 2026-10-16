@@ -48,7 +48,7 @@ export const BentoGridItem = ({
 	>
 		{header}
 		<div className="relative z-10 md:max-w-md">
-			<div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#f5f5f7] text-[#1d1d1f] transition-colors group-hover/bento:bg-[#34d17a] group-hover/bento:text-black">
+			<div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-paper text-[#1d1d1f] transition-colors group-hover/bento:bg-mint group-hover/bento:text-black">
 				{icon}
 			</div>
 			<h3 className="mb-1.5 text-xl font-semibold tracking-tight text-[#1d1d1f]">
