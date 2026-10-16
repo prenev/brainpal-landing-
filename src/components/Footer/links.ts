@@ -9,17 +9,8 @@ export const NAV_LINKS = [
 ];
 
 export const LEGAL_LINKS = [
-	{
-		label: "Privacy Policy",
-		href: "https://prenev.github.io/brain-pal/privacy-policy/",
-	},
-	{
-		label: "Terms",
-		href: "https://prenev.github.io/brain-pal/terms-of-service/",
-	},
-	{ label: "Support", href: "https://prenev.github.io/brain-pal/support/" },
-	{
-		label: "Open-source notices",
-		href: "https://prenev.github.io/brain-pal/open-source-notices/",
-	},
+	{ label: "Privacy Policy", href: "/privacy/" },
+	{ label: "Terms of Service", href: "/terms/" },
+	{ label: "Support", href: "/support/" },
+	{ label: "Open-source notices", href: "/licenses/" },
 ];

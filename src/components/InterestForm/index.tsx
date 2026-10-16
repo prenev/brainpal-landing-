@@ -208,7 +208,16 @@ const InterestForm = () => {
 					<span>
 						Email me when Wobbi launches. I agree to my email and answers being
 						stored securely and used only for that, and I can ask to be removed
-						any time.
+						any time. See the{" "}
+						<a
+							href="/privacy/"
+							target="_blank"
+							rel="noreferrer"
+							className="underline hover:text-white"
+						>
+							Privacy Policy
+						</a>
+						.
 					</span>
 				</label>
 				{errors.consent && (
