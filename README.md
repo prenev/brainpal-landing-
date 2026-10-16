@@ -128,7 +128,7 @@ Everything is generated at build time from `src/config.ts` (`site.title`, `site.
 - title, description, canonical URL, robots, Open Graph and Twitter card tags (`src/app/layout.tsx`)
 - JSON-LD structured data: Organization, WebSite, MobileApplication and FAQPage (`src/app/page.tsx`)
 - `sitemap.xml` and `robots.txt` (`src/app/sitemap.ts`, `src/app/robots.ts`)
-- 1200x630 share image `public/og.png`, favicons and a web manifest
+- 1200x630 share image `public/og-share.png`, favicons and a web manifest
 
 After the first deploy, tell search engines about the site:
 

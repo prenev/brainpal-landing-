@@ -8,7 +8,7 @@ export const site = {
 	description:
 		"A free, private mood diary for iPhone: one-tap check-ins, guided breathing, a worry box and a gentle journal. No ads, no tracking. Join the waitlist.",
 	ogImage: {
-		url: "/og.png",
+		url: "/og-share.png",
 		width: 1200,
 		height: 630,
 		alt: "Brain Pal: check in, breathe, take one small step, with the Home screen on an iPhone",
