@@ -66,9 +66,15 @@ const FooterMobile = ({ name, logo }: FooterProps) => (
 				<SocialLinks items={site.social} />
 			</div>
 			<p className="text-xs text-gray-400 dark:text-white/25">
-				© {new Date().getFullYear()} {name}.
+				© {site.copyrightYear} {site.companyName}.
 			</p>
 		</div>
+		<a
+			href={`mailto:${site.contactEmail}`}
+			className="text-xs text-body transition-colors hover:text-heading"
+		>
+			{site.contactEmail}
+		</a>
 	</motion.div>
 );
 
