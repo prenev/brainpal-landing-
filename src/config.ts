@@ -4,7 +4,7 @@ export const site = {
 	url: "https://usebrainpal.com",
 	description:
 		"One-tap mood check-ins, a private journal, slow breathing and a gentle plan for worries. Free, no ads, no tracking, works without an account.",
-	logo: "/favicon.svg",
+	logo: "/icon-192.png",
 	keywords: [
 		"Brain Pal",
 		"mood diary",
@@ -15,8 +15,6 @@ export const site = {
 	links: {
 		/** Swap for the real App Store URL at launch. */
 		appStore: "#get-the-app",
-		/** The PWA from the brain-pal repo, usable today. */
-		webApp: "https://prenev.github.io/brain-pal/",
 	},
 	companyName: "Brain Pal",
 	contactEmail: "hello@brainpal.app",
@@ -119,8 +117,8 @@ export const faqs = [
 			"No. Brain Pal is a self-help companion and does not diagnose or treat any condition.",
 	},
 	{
-		question: "What about Android?",
+		question: "Is there an Android version?",
 		answer:
-			"Use the web version and add it to your home screen. It works offline too.",
+			"Brain Pal launches on iPhone first. Android is planned for later. Tell us your phone in the form above and we'll email you when it's ready.",
 	},
 ];

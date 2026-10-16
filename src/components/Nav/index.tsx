@@ -34,12 +34,10 @@ const Nav = () => (
 				))}
 			</ul>
 			<a
-				href={site.links.webApp}
-				target="_blank"
-				rel="noopener noreferrer"
+				href="#notify"
 				className="rounded-full bg-mint px-4 py-1.5 text-sm font-semibold text-ink transition-opacity hover:opacity-85"
 			>
-				Open the app
+				Join the waitlist
 			</a>
 		</nav>
 	</header>

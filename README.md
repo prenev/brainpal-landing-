@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/favicon.svg" alt="App Landing" width="96" height="96">
+<img src="public/icon-192.png" alt="App Landing" width="96" height="96">
 
 # app-landing
 
@@ -59,7 +59,7 @@ Everything is in one file: **`src/config.ts`**
 export const site = {
   name: "Your App Name",
   description: "...",
-  logo: "/favicon.svg",
+  logo: "/icon-192.png",
   storeLinks: { apple: "#", google: "#" },
   rating: { score: 4.8, count: "1.2K" },
   version: "1.0.0",
@@ -96,13 +96,13 @@ Edit the Markdown files directly — they auto-render on the page:
 
 ## Interest form (email sign-ups)
 
-The "Notify me" form on the home page (`src/components/InterestForm`) uses
+The "Join the waitlist" form on the home page (`src/components/InterestForm`) uses
 [react-hook-form](https://react-hook-form.com) + [zod](https://zod.dev) and posts to
 [Web3Forms](https://web3forms.com), which emails every submission to you.
 
 1. Create a free access key at web3forms.com (enter the email that should get the sign-ups).
-2. In the Web3Forms dashboard, restrict the key to `usebrainpal.com`.
-3. In GitHub: **Settings → Secrets and variables → Actions → Variables → New repository variable**,
+2. If your Web3Forms plan allows it, restrict the key to `usebrainpal.com` in its dashboard.
+3. (Optional override; the deploy workflow already has a default key.) In GitHub: **Settings → Secrets and variables → Actions → Variables → New repository variable**,
    name `WEB3FORMS_KEY`, value = your access key. (It is a public key by design, so a variable is fine.)
 4. Re-run **Deploy to GitHub Pages**. Without the variable the form shows "Sign-ups aren't switched on yet".
 
