@@ -94,6 +94,26 @@ Edit the Markdown files directly — they auto-render on the page:
 
 ---
 
+## Deploy
+
+### GitHub Pages (included)
+
+This repo includes `.github/workflows/deploy-pages.yml` which deploys on every push to `main`.
+
+1. Go to **Settings → Pages**.
+2. Set **Source** to **GitHub Actions**.
+3. Push to `main` and wait for the **Deploy to GitHub Pages** workflow.
+
+The workflow builds `out/` and publishes to:
+
+- `https://<your-user-or-org>.github.io/<repository-name>/`
+
+### Other static hosts
+
+Build output is generated in `out/`, so you can also deploy it to Netlify, Vercel (static), Cloudflare Pages, or any static hosting provider.
+
+---
+
 ## License
 
 MIT — see [LICENSE](LICENSE)
