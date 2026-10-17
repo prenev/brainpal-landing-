@@ -16,6 +16,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { StickyScroll } from "@/components/ui/StickyScroll";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import { Controls, LiveActivity, WidgetWall } from "@/components/Widgets";
+import Wobbi3D from "@/components/Wobbi3D";
 import { faqs, moreInside, plans, promises, site, steps } from "@/config";
 
 const accent = "text-mint";
@@ -432,6 +433,9 @@ export default function HomePage() {
 						company when things are hard, and never guilts you for missing a
 						day.
 					</p>
+				</Reveal>
+				<Reveal className="mb-16 px-6">
+					<Wobbi3D />
 				</Reveal>
 				<div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-6 md:grid-cols-4">
 					{poses.map((p, i) => (
