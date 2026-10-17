@@ -95,7 +95,15 @@ const jsonLd = {
 			applicationCategory: "HealthApplication",
 			image: `${site.url}${site.ogImage.url}`,
 			url: site.url,
-			offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+			offers: [
+				{ "@type": "Offer", name: "Wobbi", price: "0", priceCurrency: "USD" },
+				{
+					"@type": "Offer",
+					name: "Wobbi Pro (monthly)",
+					price: "4",
+					priceCurrency: "USD",
+				},
+			],
 			featureList: [
 				"One-tap mood check-ins",
 				"Thought records",
@@ -344,7 +352,8 @@ export default function HomePage() {
 						Simple pricing.
 					</h2>
 					<p className="mx-auto mt-5 max-w-xl text-xl leading-relaxed text-[#6e6e73]">
-						Everything that helps you calm down is free. Pro adds two extras.
+						Everything that helps you calm down is free. Pro adds extras, and
+						more are coming.
 					</p>
 				</Reveal>
 				<div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
@@ -359,8 +368,8 @@ export default function HomePage() {
 						},
 						{
 							name: "Wobbi Pro",
-							price: "7 days free",
-							note: "then a monthly App Store subscription. Price announced at launch.",
+							price: "$4/month",
+							note: "starting price, after a 7-day free trial. Billed monthly through the App Store.",
 							list: plans.pro,
 							cta: "Join the waitlist",
 							pro: true,
