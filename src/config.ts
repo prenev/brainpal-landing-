@@ -148,6 +148,7 @@ export const plans = {
 		"Everything in Free",
 		"Before-and-after proof cards, showing how much calming helped",
 		"Weekly and monthly summaries",
+		"More Pro features are on the way",
 		"Cancel any time in your App Store settings",
 	],
 };
@@ -161,7 +162,7 @@ export const faqs = [
 	{
 		question: "What does Wobbi Pro add?",
 		answer:
-			"Wobbi Pro is optional. It adds before-and-after proof cards, which show how much calming helped you, and weekly and monthly summaries. It starts with a 7-day free trial and then renews monthly through the App Store. You can cancel any time in your App Store settings, and the price is shown in the App Store before you subscribe.",
+			"Wobbi Pro is optional. It adds before-and-after proof cards, which show how much calming helped you, and weekly and monthly summaries. More Pro features are coming. It starts at $4 a month after a 7-day free trial, renews monthly through the App Store, and you can cancel any time in your App Store settings. The final price is always shown in the App Store before you subscribe.",
 	},
 	{
 		question: "Do I need an account?",
