@@ -54,7 +54,7 @@ jobs:
           NEXT_PUBLIC_SUPABASE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_yLfa0qlkFKiV-AeZJtD0rA_zIRVtHXo' }}
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./out
 
